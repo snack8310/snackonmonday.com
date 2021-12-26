@@ -7,7 +7,7 @@ defaultContentLanguage = "zh-cn"
 theme = "DoIt"
 # themes directory
 # 主题目录
-# themesDir = "../.."
+# themesDir = ""
 
 # website title
 # 网站标题
@@ -399,7 +399,7 @@ enableEmoji = true
         [languages.zh-cn.params.home.profile]
           enable = true
           # Gravatar 邮箱，用于优先在主页显示的头像
-          gravatarEmail = ""
+          gravatarEmail = "snack8310@outlook.com"
           # 主页显示头像的 URL
           avatarURL = "/images/avatar.webp"
           # 主页显示的网站标题 (支持 HTML 格式)
@@ -419,82 +419,82 @@ enableEmoji = true
           paginate = 7
       # 主页的社交信息设置
       [languages.zh-cn.params.social]
-        GitHub = "xxxx"
-        Linkedin = ""
-        Twitter = ""
-        Instagram = ""
-        Facebook = ""
-        Telegram = ""
-        Medium = ""
-        Gitlab = ""
-        Youtubelegacy = ""
-        Youtubecustom = ""
-        Youtubechannel = ""
-        Tumblr = ""
-        Quora = ""
-        Keybase = ""
-        Pinterest = ""
-        Reddit = ""
-        Codepen = ""
-        FreeCodeCamp = ""
-        Bitbucket = ""
-        Stackoverflow = ""
-        Weibo = "xxxx"
-        Odnoklassniki = ""
-        VK = ""
-        Flickr = ""
-        Xing = ""
-        Snapchat = ""
-        Soundcloud = ""
-        Spotify = ""
-        Bandcamp = ""
-        Paypal = ""
-        Fivehundredpx = ""
-        Mix = ""
-        Goodreads = ""
-        Lastfm = ""
-        Foursquare = ""
-        Hackernews = ""
-        Kickstarter = ""
-        Patreon = ""
-        Steam = "xxxx"
-        Twitch = ""
-        Strava = ""
-        Skype = ""
-        Whatsapp = ""
-        Zhihu = "xxxx"
-        Douban = "xxxx"
-        Angellist = ""
-        Slidershare = ""
-        Jsfiddle = ""
-        Deviantart = ""
-        Behance = ""
-        Dribbble = ""
-        Wordpress = ""
-        Vine = ""
-        Googlescholar = ""
-        Researchgate = ""
-        Mastodon = ""
-        Thingiverse = ""
-        Devto = "xxxx"
-        Gitea = ""
-        XMPP = ""
-        Matrix = ""
-        Bilibili = "xxxx"
-        ORCID = ""
-        Liberapay = ""
-        Ko-Fi = ""
-        BuyMeACoffee = ""
-        Linktree = ""
-        QQ = ""
-        QQGroup = ""
-        Email = "xxxx@xxxx.com"
+        GitHub = "snack8310"
+        Linkedin = "snack8310"
+#         Twitter = ""
+#         Instagram = ""
+#         Facebook = ""
+#         Telegram = ""
+#         Medium = ""
+#         Gitlab = ""
+#         Youtubelegacy = ""
+#         Youtubecustom = ""
+#         Youtubechannel = ""
+#         Tumblr = ""
+#         Quora = ""
+#         Keybase = ""
+#         Pinterest = ""
+#         Reddit = ""
+#         Codepen = ""
+#         FreeCodeCamp = ""
+#         Bitbucket = ""
+#         Stackoverflow = ""
+#         Weibo = "xxxx"
+#         Odnoklassniki = ""
+#         VK = ""
+#         Flickr = ""
+#         Xing = ""
+#         Snapchat = ""
+#         Soundcloud = ""
+#         Spotify = ""
+#         Bandcamp = ""
+#         Paypal = ""
+#         Fivehundredpx = ""
+#         Mix = ""
+#         Goodreads = ""
+#         Lastfm = ""
+#         Foursquare = ""
+#         Hackernews = ""
+#         Kickstarter = ""
+#         Patreon = ""
+#         Steam = "xxxx"
+#         Twitch = ""
+#         Strava = ""
+#         Skype = ""
+#         Whatsapp = ""
+#         Zhihu = "xxxx"
+#         Douban = "xxxx"
+#         Angellist = ""
+#         Slidershare = ""
+#         Jsfiddle = ""
+#         Deviantart = ""
+#         Behance = ""
+#         Dribbble = ""
+#         Wordpress = ""
+#         Vine = ""
+#         Googlescholar = ""
+#         Researchgate = ""
+#         Mastodon = ""
+#         Thingiverse = ""
+#         Devto = "xxxx"
+#         Gitea = ""
+#         XMPP = ""
+#         Matrix = ""
+#         Bilibili = "xxxx"
+#         ORCID = ""
+#         Liberapay = ""
+#         Ko-Fi = ""
+#         BuyMeACoffee = ""
+#         Linktree = ""
+#         QQ = ""
+#         QQGroup = ""
+        Email = "snack8310@outlook.com"
         RSS = true
         # 赞助设置
       [languages.zh-cn.params.sponsor]
         enable = false
         bio = "如果你觉得这篇文章对你有所帮助，欢迎赞赏~"
-        link = "https://github.com/sponsors/HEIGE-PCloud"
+        link = "https://github.com/snack8310"
         # custom = "<a href=\"https://www.buymeacoffee.com/PCloud\" target=\"_blank\"><img src=\"https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png\" alt=\"Buy Me A Coffee\" style=\"height: 40px !important;width: 145 !important;\" ></a>"
 
 
@@ -585,7 +585,7 @@ enableEmoji = true
     icp = ""
     # license info (HTML format is supported)
     # 许可协议信息 (支持 HTML 格式)
-    license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+    # license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
 
   # Section (all posts) page config
   # Section (所有文章) 页面配置
@@ -646,20 +646,20 @@ enableEmoji = true
     fontawesome = true
     # whether to show link to Raw Markdown content of the content
     # 是否显示原始 Markdown 文档内容的链接
-    linkToMarkdown = true
+    linkToMarkdown = false
     # configure the link to view source the post
     # 配置文章原始文件的链接
-    linkToSource = "https://github.com/HEIGE-PCloud/DoIt/blob/main/exampleSite/content/{path}"
+    #linkToSource = "https://github.com/snack8310/snackonmonday.com/content/{path}"
     # "https://github.com/user/repo/blob/main/{path}"
     # configure the link to edit the post
     # 配置编辑文章的链接
-    linkToEdit = "https://github.com/HEIGE-PCloud/DoIt/edit/main/exampleSite/content/{path}"
+    #linkToEdit = "https://github.com/snack8310/snackonmonday.com/edit/content/{path}"
     # https://github.com/user/repo/edit/main/{path}
     # https://gitlab.com/user/repo/-/edit/main/{path}
     # https://bitbucket.org/user/repo/src/main/{path}?mode=edit
     # configure the link to report issue for the post
     # 配置提交错误的链接
-    linkToReport = "https://github.com/HEIGE-PCloud/DoIt/issues/new?title=[bug]%20{title}&body=|Field|Value|%0A|-|-|%0A|Title|{title}|%0A|Url|{url}|%0A|Filename|https://github.com/HEIGE-PCloud/DoIt/blob/main/exampleSite/content/{path}|"
+    #linkToReport = "https://github.com/HEIGE-PCloud/DoIt/issues/new?title=[bug]%20{title}&body=|Field|Value|%0A|-|-|%0A|Title|{title}|%0A|Url|{url}|%0A|Filename|https://github.com/snack8310/snackonmonday.com/content/{path}|"
     # https://github.com/user/repo/issues/new?title=[bug]%20{title}&body=|Field|Value|%0A|-|-|%0A|Title|{title}|%0A|Url|{url}|%0A|Filename|https://github.com/user/repo/blob/main/{path}|"
     # https://gitlab.com/user/repo/-/issues/new?issue[title]=[bug]%20{title}&issue[description]=|Field|Value|%0A|-|-|%0A|Title|{title}|%0A|Url|{url}|%0A|Filename|https://gitlab.com/user/repo/-/edit/main/{path}|
     # whether to show the full text content in RSS
@@ -748,24 +748,24 @@ enableEmoji = true
     # 文章页面的分享信息设置
     [params.page.share]
       enable = true
-      Twitter = true
-      Facebook = true
-      Linkedin = false
+      Twitter = false
+      Facebook = false
+      Linkedin = true
       Whatsapp = false
       Pinterest = false
       Tumblr = false
-      HackerNews = true
+      HackerNews = false
       Reddit = false
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Digg = false
       Stumbleupon = false
       Flipboard = false
-      Weibo = true
+      Weibo = false
       Renren = false
       Myspace = false
       Blogger = false
@@ -775,7 +775,7 @@ enableEmoji = true
       Skype = false
       Trello = false
       Mix = false
-      Telegram = true
+      Telegram = false
     # Comment config
     # 评论系统设置
     [params.page.comment]
@@ -1088,11 +1088,11 @@ enableEmoji = true
 # Author config
 # 作者配置
 [author]
-  name = "PCloud"
-  email = "heige.pcloud@outlook.com"
-  link = "https://github.com/HEIGE-PCloud"
+  name = "周一的下午茶"
+  email = "snack8310@outlook.com"
+  link = "https://github.com/snack8310"
   avatar = "/images/avatar.webp"
-  gravatarEmail = ""
+  gravatarEmail = "snack8310@outlook.com"
 
 # Sitemap config
 # 网站地图配置
