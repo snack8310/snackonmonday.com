@@ -399,9 +399,9 @@ enableEmoji = true
         [languages.zh-cn.params.home.profile]
           enable = true
           # Gravatar 邮箱，用于优先在主页显示的头像
-          gravatarEmail = "snack8310@outlook.com"
+          # gravatarEmail = "snack8310@outlook.com"
           # 主页显示头像的 URL
-          avatarURL = "/images/avatar.webp"
+          avatarURL = "/images/snack_icon.jpeg"
           # 主页显示的网站标题 (支持 HTML 格式)
           title = ""
           # 主页显示的网站副标题
@@ -570,7 +570,7 @@ enableEmoji = true
     # Hosted on (HTML format is supported)
     # 托管服务信息 (支持 HTML 格式)
     # <a title="Github Pages" href="https://docs.github.com/en/pages/" target="_blank" rel="noopener noreffer">GitHub Pages</a>
-    hostedOn = '' 
+    hostedOn = ''
     # whether to show copyright info
     # 是否显示版权信息
     copyright = true
