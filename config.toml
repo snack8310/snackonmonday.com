@@ -303,30 +303,6 @@ enableEmoji = true
         title = ""
         weight = 1
       [[languages.zh-cn.menu.main]]
-        identifier = "categories"
-        pre = ""
-        post = ""
-        name = "分类"
-        url = "/categories/"
-        title = ""
-        weight = 3
-      [[languages.zh-cn.menu.main]]
-        identifier = "series"
-        pre = ""
-        post = ""
-        name = "系列"
-        url = "/series/"
-        title = ""
-        weight = 4
-      [[languages.zh-cn.menu.main]]
-        identifier = "showcase"
-        pre = ""
-        post = ""
-        name = "作品"
-        url = "/showcase/"
-        title = ""
-        weight = 6
-      [[languages.zh-cn.menu.main]]
         identifier = "about"
         pre = ""
         post = ""
