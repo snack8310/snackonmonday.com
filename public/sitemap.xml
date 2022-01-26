@@ -1,0 +1,21 @@
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>http://www.snackonmonday.com/posts/</loc><lastmod>2021-12-27T15:27:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://www.snackonmonday.com/</loc><lastmod>2021-12-27T15:27:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://www.snackonmonday.com/scale_in_architecture/</loc><lastmod>2021-12-27T15:27:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://www.snackonmonday.com/what_is_a_good_api/</loc><lastmod>2021-12-27T15:25:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://www.snackonmonday.com/showcase/</loc><lastmod>2021-11-01T20:08:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/about/</loc><lastmod>2019-08-02T11:04:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/tech/</loc><lastmod>2019-08-02T11:04:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/authors/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/tags/configuration/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/tags/content/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/series/getting-start/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/tags/installation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/offline/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/series/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.snackonmonday.com/series/test-series/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

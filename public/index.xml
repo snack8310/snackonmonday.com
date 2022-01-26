@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Snack On Monday</title>
+        <link>http://www.snackonmonday.com/</link>
+        <description>周一的下午茶</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>snack8310@outlook.com (周一的下午茶)</managingEditor>
+            <webMaster>snack8310@outlook.com (周一的下午茶)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 27 Dec 2021 15:27:12 &#43;0800</lastBuildDate>
+            <atom:link href="http://www.snackonmonday.com/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>系统设计中的扩展性</title>
+    <link>http://www.snackonmonday.com/scale_in_architecture/</link>
+    <pubDate>Mon, 27 Dec 2021 15:27:12 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/scale_in_architecture/</guid>
+    <description><![CDATA[架构设计中的扩展性在项目开发中，大家一定遇到过系统卡顿的场景，当我们想要解决系统瓶颈时，究竟该如何选择？ 欢迎观看系统架构设计系列内容，今天我]]></description>
+</item><item>
+    <title>定义一个好的API</title>
+    <link>http://www.snackonmonday.com/what_is_a_good_api/</link>
+    <pubDate>Mon, 27 Dec 2021 15:25:39 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/what_is_a_good_api/</guid>
+    <description><![CDATA[大家好，今天我们聊一下什么是API，以及如何设计一个好的API。 什么是API？举个现实场景的例子，我们去餐厅吃饭，通过菜单了解到餐厅提供的美]]></description>
+</item></channel>
+</rss>
