@@ -2,7 +2,10 @@
 title: "在AWS上部署一个Lambda函数"
 date: 2022-02-02T16:42:31+08:00
 draft: false
+description: 了解AWS的Lambda函数，体验AWS上无服务化应用和API网关的部署过程
 ---
+
+<!--more-->
 
 ## 什么是Lambda函数
 Lambda是AWS面向开发人员推出的应用层级Serverless解决方案。使用通过符合Lambda规范的代码，在AWS的环境上快速部署线上使用。通过配置支持自动扩容，安全，权限，网关等，完全屏蔽底层服务器管理的功能。

@@ -2,7 +2,10 @@
 title: "Lambda的线程数"
 date: 2022-02-03T13:03:45+08:00
 draft: false
+description: 测试Lambda函数的线程数量和内存配置影响
 ---
+
+<!--more-->
 
 ## 背景
 部署一个应用，我们需要确定一下成本和性能，Lambda函数也一样。按照AWS的说明，默认的Lambda是512M内存的配置，可以上线到10GB，但没有CPU核数的选项。我们是否能充分利用一个Lambda函数的全部性能呢。
