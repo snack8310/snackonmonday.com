@@ -303,14 +303,6 @@ enableEmoji = true
         title = ""
         weight = 1
       [[languages.zh-cn.menu.main]]
-        identifier = "tech"
-        pre = ""
-        post = ""
-        name = "技术"
-        url = "/tech/"
-        title = ""
-        weight = 7
-      [[languages.zh-cn.menu.main]]
         identifier = "about"
         pre = ""
         post = ""
