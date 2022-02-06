@@ -1,10 +1,14 @@
 ---
-title: "Lambda_concurrency"
+title: "Lambda并发测试"
 date: 2022-01-26T14:31:01+08:00
 draft: true
+description: 测试Lambda函数的线程数量和内存配置影响
 ---
 
-### 并发的场景
+<!--more-->
+
+
+## 并发的场景
 
 怎么体验Lambda的优点。
 我做了两个简单的函数，一个只打印日志，一个增加了2s的Sleep
@@ -32,10 +36,10 @@ draft: true
     }
 ```
 
-### 本地调用
+## 本地调用
 启动10个线程，分别调用两个函数20次，我们观察下，两个函数会有什么变化。
 
-### 结果
+## 结果
 
 ```
 14:53:18.770 [ForkJoinPool.commonPool-worker-9] INFO com.snack.learning.lambda.snacklambda.SnackLambdaApplication - {"statusCode":200,"body":"Hi null"}
@@ -62,5 +66,5 @@ draft: true
 
 
 
-### 代码参照
+## 代码参照
 你可以通过 https://github.com/snack8310/snacklambda 下载源代码
