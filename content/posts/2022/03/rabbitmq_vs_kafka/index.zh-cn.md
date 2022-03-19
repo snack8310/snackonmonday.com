@@ -4,6 +4,9 @@ date: 2022-03-19T16:01:22+08:00
 draft: false
 description: RabbitMQ和ApacheKafka的差异，什么时候选择哪一款？
 ---
+
+<!--more-->
+
 ## 写在最前
 
 本文翻译/修改自博客文章
