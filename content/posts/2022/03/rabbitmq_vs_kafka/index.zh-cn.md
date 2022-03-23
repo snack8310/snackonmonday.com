@@ -25,21 +25,25 @@ Kafka 和 RabbitMQ，很像，什么场景选择哪一个很困惑。这背后�
 这种传递消息的方式，分离生产者和消费者。处理异步消息，通常会选择两种模式--消息队列和发布/订阅
 
 #### 消息队列
+
 ![消息队列](./img/pic11.png)
 
 #### 发布/订阅
+
 ![发布订阅](./img/pic12.png)
 
 ### RabbitMQ
 RabbitMQ是消息代理（MessageBroker）的实现，也通常成为Service Bus。消息代理的流行产品还包括	，ActiveMQ，Azure ServiceBus，Amazon Simple Queue Service（SQS）
 
 Queue模式
+
 ![Queue模式](./img/pic13.png)
 
 #### Apache Kafka
 Kafka不是消息代理（MessageBroker）的实现，是一个分布式流平台（distributed streaming platform）。同样的流行产品包括，Azure Event Hubs， AWS Kinesis Data Streams
 
 Topic模式
+
 ![Topic模式](./img/pic14.png)
 
 ### 显著差异（Message Ordering）
@@ -47,6 +51,7 @@ RabbitMQ 是一个 消息代理，而 Apache Kafka 是一个 分布式流平�
 
 ### 消息排序
 RabbitMQ：对消息顺序不提供任何顺序保障。当需要顺序性的场合，需要仅限于一个消费者，这牺牲并发的性能。当出现例如消费超时重试的场合，无法保证优先消费，RabbitMQ关于信息消费的方式如下：
+
 ![消息排序](./img/pic21.png)
 
 Kafka：提供了可靠的消息顺序保证。所有发送到同一个topic的消息，都会按照顺序处理。生产者可以在每条消息通道上设置分区键以创建数据流，让消费者顺序处理。
