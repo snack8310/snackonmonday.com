@@ -103,7 +103,7 @@ class TestDatasource:
 
 ### 与传统测试的区别
 
-![流程节点的转变](./img/node-change.png#pic_center=300px)
+{{< image src="img/node-change.png" caption="流程节点的转变" width="500" >}}
 
 比较明显的改变：测试与编码流程没有前后节点关系，意味着：
    1. 没有冒烟测试环节
