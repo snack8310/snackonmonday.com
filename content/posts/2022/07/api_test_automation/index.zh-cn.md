@@ -1,7 +1,7 @@
 ---
 title: "选择自动化测试-一个降成本的选择"
 date: 2022-07-20T17:25:51+08:00
-draft: true
+draft: false
 ---
 
 ## 测试的本质
@@ -103,7 +103,7 @@ class TestDatasource:
 
 ### 与传统测试的区别
 
-![流程节点的转变](./img/node-change.png)
+![流程节点的转变](./img/node-change.png#pic_center=300px)
 
 比较明显的改变：
 1. 取消了冒烟测试流程
