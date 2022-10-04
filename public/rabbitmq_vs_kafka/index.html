@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">RabbitMQ 对比 Apache Kafka - Snack On Monday</title><meta name="Description" content="RabbitMQ和ApacheKafka的差异，什么时候选择哪一款？"><meta property="og:title" content="RabbitMQ 对比 Apache Kafka" />
+<meta property="og:description" content="RabbitMQ和ApacheKafka的差异，什么时候选择哪一款？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.snackonmonday.com/rabbitmq_vs_kafka/" /><meta property="og:image" content="http://www.snackonmonday.com/images/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-19T16:01:22+08:00" />
+<meta property="article:modified_time" content="2022-03-19T16:01:22+08:00" /><meta property="og:site_name" content="周一的下午茶" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://www.snackonmonday.com/images/avatar.webp"/>
+
+<meta name="twitter:title" content="RabbitMQ 对比 Apache Kafka"/>
+<meta name="twitter:description" content="RabbitMQ和ApacheKafka的差异，什么时候选择哪一款？"/>
+<meta name="application-name" content="DoIt">
+<meta name="apple-mobile-web-app-title" content="DoIt">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.snackonmonday.com/rabbitmq_vs_kafka/" /><link rel="prev" href="http://www.snackonmonday.com/deploy_trojan_in_aws_ec2/" /><link rel="next" href="http://www.snackonmonday.com/prometheus_increase_from_zero/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <meta name="google-site-verification" content="MQ8DNu27ayX6B_4ObiEDK09vGr1fdy7kOAnbd09hJk4" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "RabbitMQ 对比 Apache Kafka",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/www.snackonmonday.com\/rabbitmq_vs_kafka\/"
+        },"image": ["http:\/\/www.snackonmonday.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  2238 ,
+        "url": "http:\/\/www.snackonmonday.com\/rabbitmq_vs_kafka\/","datePublished": "2022-03-19T16:01:22+08:00","dateModified": "2022-03-19T16:01:22+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/www.snackonmonday.com\/images\/avatar.webp",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "周一的下午茶"
+            },"description": "RabbitMQ和ApacheKafka的差异，什么时候选择哪一款？"
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RabbitMQ 对比 Apache Kafka</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/snack8310" title="Author" target="_blank" rel="noopener noreffer author" class="author">周一的下午茶</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-19">2022-03-19</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-19">2022-03-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2238 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/rabbitmq_vs_kafka/" class="leancloud_visitors" data-flag-title="RabbitMQ 对比 Apache Kafka">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count id=twikoo_visitors></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/rabbitmq_vs_kafka/" class="comment_count" data-flag-title="RabbitMQ 对比 Apache Kafka">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#写在最前">写在最前</a></li>
+    <li><a href="#困惑">困惑</a></li>
+    <li><a href="#解惑">解惑</a>
+      <ul>
+        <li><a href="#异步消息模式">异步消息模式</a>
+          <ul>
+            <li><a href="#消息队列">消息队列</a></li>
+            <li><a href="#发布订阅">发布/订阅</a></li>
+          </ul>
+        </li>
+        <li><a href="#rabbitmq">RabbitMQ</a>
+          <ul>
+            <li><a href="#apache-kafka">Apache Kafka</a></li>
+          </ul>
+        </li>
+        <li><a href="#显著差异message-ordering">显著差异（Message Ordering）</a></li>
+        <li><a href="#消息排序">消息排序</a></li>
+        <li><a href="#消息路由message-routing">消息路由（Message Routing）</a></li>
+        <li><a href="#消息时间message-timing">消息时间（Message Timing）</a></li>
+        <li><a href="#消息保留message-retention">消息保留（Message Retention）</a></li>
+        <li><a href="#故障处理fault-handling">故障处理（Fault Handling）</a></li>
+        <li><a href="#规模scale">规模（Scale）</a></li>
+        <li><a href="#消费者复杂性consumer-complexity">消费者复杂性（Consumer Complexity）</a></li>
+        <li><a href="#如何选择">如何选择</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition warning open">
+                <div class="details-summary admonition-title">
+                    <i class="icon fas fa-exclamation-triangle fa-fwwarning"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
+                </div>
+                <div class="details-content">
+                    <div class="admonition-content">
+                        本文最后更新于 <span class="timeago" datetime="2022-03-19T16:01:22" title="March 19, 2022">2022-03-19</span>，文中内容可能已过时。</div>
+                </div>
+            </div><h2 id="写在最前" class="headerLink">
+    <a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%89%8d" class="header-mark"></a>写在最前</h2><p>本文翻译/修改自博客文章</p>
+<ul>
+<li><a href="https://stiller.blog/2020/02/rabbitmq-vs-kafka-an-architects-dilemma-part-1/" target="_blank" rel="noopener noreffer">https://stiller.blog/2020/02/rabbitmq-vs-kafka-an-architects-dilemma-part-1/</a></li>
+<li><a href="https://stiller.blog/2020/02/rabbitmq-vs-kafka-an-architects-dilemma-part-2/" target="_blank" rel="noopener noreffer">https://stiller.blog/2020/02/rabbitmq-vs-kafka-an-architects-dilemma-part-2/</a></li>
+</ul>
+<p>当我面临着实践中的困境，两种工具都在日常使用。对MQ和Streaming存在困惑后，找到了一个能解决困惑的文章。记录在自己的blog中，后续会根据自己的知识，补足Kafka一些具体的场景和问题。</p>
+<h2 id="困惑" class="headerLink">
+    <a href="#%e5%9b%b0%e6%83%91" class="header-mark"></a>困惑</h2><p>Kafka 和 RabbitMQ，很像，什么场景选择哪一个很困惑。这背后更多的一个事情是，Streaming 和 Message Queue的差异性是什么。
+基于这个问题，讨论下两种模式的内部结构。</p>
+<h2 id="解惑" class="headerLink">
+    <a href="#%e8%a7%a3%e6%83%91" class="header-mark"></a>解惑</h2><h3 id="异步消息模式" class="headerLink">
+    <a href="#%e5%bc%82%e6%ad%a5%e6%b6%88%e6%81%af%e6%a8%a1%e5%bc%8f" class="header-mark"></a>异步消息模式</h3><p>这种传递消息的方式，分离生产者和消费者。处理异步消息，通常会选择两种模式&ndash;消息队列和发布/订阅</p>
+<h4 id="消息队列" class="headerLink">
+    <a href="#%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97" class="header-mark"></a>消息队列</h4><p><img
+        class="lazyload"
+        data-src="./img/pic11.png"
+        data-srcset="./img/pic11.png, ./img/pic11.png 1.5x, ./img/pic11.png 2x"
+        data-sizes="auto"
+        alt="./img/pic11.png"
+        title="消息队列"
+    /></p>
+<h4 id="发布订阅" class="headerLink">
+    <a href="#%e5%8f%91%e5%b8%83%e8%ae%a2%e9%98%85" class="header-mark"></a>发布/订阅</h4><p><img
+        class="lazyload"
+        data-src="./img/pic12.png"
+        data-srcset="./img/pic12.png, ./img/pic12.png 1.5x, ./img/pic12.png 2x"
+        data-sizes="auto"
+        alt="./img/pic12.png"
+        title="发布订阅"
+    /></p>
+<h3 id="rabbitmq" class="headerLink">
+    <a href="#rabbitmq" class="header-mark"></a>RabbitMQ</h3><p>RabbitMQ是消息代理（MessageBroker）的实现，也通常成为Service Bus。消息代理的流行产品还包括	，ActiveMQ，Azure ServiceBus，Amazon Simple Queue Service（SQS）</p>
+<p>Queue模式</p>
+<p><img
+        class="lazyload"
+        data-src="./img/pic13.png"
+        data-srcset="./img/pic13.png, ./img/pic13.png 1.5x, ./img/pic13.png 2x"
+        data-sizes="auto"
+        alt="./img/pic13.png"
+        title="Queue模式"
+    /></p>
+<h4 id="apache-kafka" class="headerLink">
+    <a href="#apache-kafka" class="header-mark"></a>Apache Kafka</h4><p>Kafka不是消息代理（MessageBroker）的实现，是一个分布式流平台（distributed streaming platform）。同样的流行产品包括，Azure Event Hubs， AWS Kinesis Data Streams</p>
+<p>Topic模式</p>
+<p><img
+        class="lazyload"
+        data-src="./img/pic14.png"
+        data-srcset="./img/pic14.png, ./img/pic14.png 1.5x, ./img/pic14.png 2x"
+        data-sizes="auto"
+        alt="./img/pic14.png"
+        title="Topic模式"
+    /></p>
+<h3 id="显著差异message-ordering" class="headerLink">
+    <a href="#%e6%98%be%e8%91%97%e5%b7%ae%e5%bc%82message-ordering" class="header-mark"></a>显著差异（Message Ordering）</h3><p>RabbitMQ 是一个 消息代理，而 Apache Kafka 是一个 分布式流平台，这是个底层不同目标的设计产品。</p>
+<h3 id="消息排序" class="headerLink">
+    <a href="#%e6%b6%88%e6%81%af%e6%8e%92%e5%ba%8f" class="header-mark"></a>消息排序</h3><p>RabbitMQ：对消息顺序不提供任何顺序保障。当需要顺序性的场合，需要仅限于一个消费者，这牺牲并发的性能。当出现例如消费超时重试的场合，无法保证优先消费，RabbitMQ关于信息消费的方式如下：</p>
+<p><img
+        class="lazyload"
+        data-src="./img/pic21.png"
+        data-srcset="./img/pic21.png, ./img/pic21.png 1.5x, ./img/pic21.png 2x"
+        data-sizes="auto"
+        alt="./img/pic21.png"
+        title="消息排序"
+    /></p>
+<p>Kafka：提供了可靠的消息顺序保证。所有发送到同一个topic的消息，都会按照顺序处理。生产者可以在每条消息通道上设置分区键以创建数据流，让消费者顺序处理。</p>
+<h3 id="消息路由message-routing" class="headerLink">
+    <a href="#%e6%b6%88%e6%81%af%e8%b7%af%e7%94%b1message-routing" class="header-mark"></a>消息路由（Message Routing）</h3><p>RabbitMQ：可以根据订阅者定义的路由规则，将消息交付。允许消费者消费指定的消息类型。
+消息队列的使用过程大概如下：
+（1）客户端连接到消息队列服务器，打开一个channel。
+（2）客户端声明一个exchange，并设置相关属性。
+（3）客户端声明一个queue，并设置相关属性。
+（4）客户端使用routing key，在exchange和queue之间建立好绑定关系。
+（5）客户端投递消息到exchange。
+Kafka：不允许消费者在轮询消息之前过滤主题中的消息。需要接收分区中的所有消息。</p>
+<h3 id="消息时间message-timing" class="headerLink">
+    <a href="#%e6%b6%88%e6%81%af%e6%97%b6%e9%97%b4message-timing" class="header-mark"></a>消息时间（Message Timing）</h3><p>RabbitMQ：提供了多种功能：
+消息生存时间（TTL）：自动删除过期消息，并放入死信队列中。
+延迟消息：通过一些消息中间件，提供了延时发送消息的功能。
+Kafka：不支持此功能。Kafka作为一个流平台，的设计目标是实时到达写入分区，提供消费者立即使用。Kafka的本质是写入分区Log，可以通过Log日志记录删除的方式清理事务日志，但这并不是为了解决消息时间。</p>
+<h3 id="消息保留message-retention" class="headerLink">
+    <a href="#%e6%b6%88%e6%81%af%e4%bf%9d%e7%95%99message-retention" class="header-mark"></a>消息保留（Message Retention）</h3><p>RabbitMQ：消息消费后，会立即删除，这是所有消息代理设计的一部分。
+Kafka：Kafka设计保存所有Topic的日志。并不关心Topic的消费状态。消费者可以根据偏移量随时调整过去的消费信息。</p>
+<h3 id="故障处理fault-handling" class="headerLink">
+    <a href="#%e6%95%85%e9%9a%9c%e5%a4%84%e7%90%86fault-handling" class="header-mark"></a>故障处理（Fault Handling）</h3><p>这里两种方案有非常明显的不同：
+RabbitMQ：当消费者处于处理消息故障的场合，其他消费者可以处理后面的消息。与消息的无序性有关系</p>
+<p><img
+        class="lazyload"
+        data-src="./img/pic22.png"
+        data-srcset="./img/pic22.png, ./img/pic22.png 1.5x, ./img/pic22.png 2x"
+        data-sizes="auto"
+        alt="./img/pic22.png"
+        title="故障处理"
+    /></p>
+<p>Kafka：消费者出现重试的场合，是无法消费后面的消息。解决办法是手动调整消费偏移量。</p>
+<p><img
+        class="lazyload"
+        data-src="./img/pic23.png"
+        data-srcset="./img/pic23.png, ./img/pic23.png 1.5x, ./img/pic23.png 2x"
+        data-sizes="auto"
+        alt="./img/pic23.png"
+        title="故障处理"
+    /></p>
+<h3 id="规模scale" class="headerLink">
+    <a href="#%e8%a7%84%e6%a8%a1scale" class="header-mark"></a>规模（Scale）</h3><p>通常来说，大家会认为Kafka提供了更好的性能，这基于Kafka使用顺序I/O，零拷贝等的设计机制。一般来说十万/秒的消息支撑能力是很容易的。
+但RabbitMQ集群也是能足够支撑几万/秒的能力。
+重要的是，一般规模的应用，是用不到如此高性能的规模。这两个模式都能很好的支持。</p>
+<h3 id="消费者复杂性consumer-complexity" class="headerLink">
+    <a href="#%e6%b6%88%e8%b4%b9%e8%80%85%e5%a4%8d%e6%9d%82%e6%80%a7consumer-complexity" class="header-mark"></a>消费者复杂性（Consumer Complexity）</h3><p>RabbitMQ：智能代理和愚蠢消费者（a smart broker / dumb consumer model ），可以灵活支撑消费者的扩展。</p>
+<p><img
+        class="lazyload"
+        data-src="./img/pic24.png"
+        data-srcset="./img/pic24.png, ./img/pic24.png 1.5x, ./img/pic24.png 2x"
+        data-sizes="auto"
+        alt="./img/pic24.png"
+        title="复杂性"
+    /></p>
+<p>Kafka：愚蠢代理和智能消费者（a dumb-broker / smart consumer model ），需要在消费者内部协调主题分区。
+kafka在负载的增加减少的场合，需要做更多的努力。Kafka-SDK会帮我们做一部分额外的工作。</p>
+<p><img
+        class="lazyload"
+        data-src="./img/pic25.png"
+        data-srcset="./img/pic25.png, ./img/pic25.png 1.5x, ./img/pic25.png 2x"
+        data-sizes="auto"
+        alt="./img/pic25.png"
+        title="复杂性"
+    /></p>
+<h3 id="如何选择" class="headerLink">
+    <a href="#%e5%a6%82%e4%bd%95%e9%80%89%e6%8b%a9" class="header-mark"></a>如何选择</h3><p>我们面临着不同的业务场景中选择消息模式，究竟要如何选择呢，基于上面的差异，我们能得到下面的这些结论。</p>
+<ol>
+<li>使用RabbitMQ更合适的场景：
+<ul>
+<li>需要很灵活的路由规则</li>
+<li>需要定时/延时控制消息</li>
+<li>避免依赖消费者处理错误消息</li>
+<li>更简单的消费者要求</li>
+</ul>
+</li>
+<li>使用Kafka更合适的场景：
+<ul>
+<li>消息严格排序</li>
+<li>实时要求</li>
+<li>消息保存的持久性，重播消息的功能</li>
+<li>极高并发的要求。
+除此之外，还要考虑研发人员对上述技术能力的掌握程度。例如KafkaSDK的学习成本。
+很多场合，两种模式也能共存，这取决于维护人员成本。
+例如基于事件驱动架构的系统中，使用RabbitMQ发送点对点的服务调用，解耦函数依赖。使用Kafka发送业务事件通知。比较显著的原因是，作为业务事件的存储和重放 ，是事件驱动架构设计的一个核心诉求。Kafka的事件保存机制更合理。另一方面，当我们需要解耦动作依赖，重试的场景下，RabbitMQ的表现更加突出。</li>
+</ul>
+</li>
+</ol>
+<h2 id="结论" class="headerLink">
+    <a href="#%e7%bb%93%e8%ae%ba" class="header-mark"></a>结论</h2><p>通过比较这两种模式，本质上的MQ和Streaming的异同，很多场景下，双方是可以互换的。但由于底层设计模型的不同，在一些细分场景下，两者也会有显著的优缺点。这需要架构师深入理解后，做更合适的选择。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-19</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://www.snackonmonday.com/rabbitmq_vs_kafka/"><i class="fab fa-linkedin fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/deploy_trojan_in_aws_ec2/" class="prev" rel="prev" title="部署Trojan"><i class="fas fa-angle-left fa-fw"></i>部署Trojan</a>
+            <a href="/prometheus_increase_from_zero/" class="next" rel="next" title="Prometheus中increase计算的初始值问题">Prometheus中increase计算的初始值问题<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/snack8310" target="_blank" rel="noopener noreferrer">周一的下午茶</a></span></div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                                
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                                
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://doit-docs-comment-twikoo.vercel.app/","lang":"zh-cn"}},"search":{"algoliaAppID":"5YGRNRQK1G","algoliaIndex":"zh_cn_index","algoliaSearchKey":"0ff6874805de24b84aa1d5ebccad56cd","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"sharerjs":true};</script><script type="text/javascript" src="/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/js/twikoo.min.js" defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script></div>
+</body>
+
+</html>

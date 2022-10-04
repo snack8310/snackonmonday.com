@@ -22,7 +22,7 @@
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.snackonmonday.com/scale_in_architecture/" /><link rel="prev" href="http://www.snackonmonday.com/what_is_a_good_api/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.snackonmonday.com/scale_in_architecture/" /><link rel="prev" href="http://www.snackonmonday.com/what_is_a_good_api/" /><link rel="next" href="http://www.snackonmonday.com/lambda_concurrency/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -67,7 +67,7 @@
             <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tech/"> 技术 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -115,7 +115,7 @@
                     <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tech/" title="">技术</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -156,7 +156,15 @@
     <li><a href="#架构设计中的扩展性">架构设计中的扩展性</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="架构设计中的扩展性" class="headerLink">
+            </div><div class="content" id="content"><div class="details admonition warning open">
+                <div class="details-summary admonition-title">
+                    <i class="icon fas fa-exclamation-triangle fa-fwwarning"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
+                </div>
+                <div class="details-content">
+                    <div class="admonition-content">
+                        本文最后更新于 <span class="timeago" datetime="2021-12-27T15:27:12" title="December 27, 2021">2021-12-27</span>，文中内容可能已过时。</div>
+                </div>
+            </div><h2 id="架构设计中的扩展性" class="headerLink">
     <a href="#%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1%e4%b8%ad%e7%9a%84%e6%89%a9%e5%b1%95%e6%80%a7" class="header-mark"></a>架构设计中的扩展性</h2><p>在项目开发中，大家一定遇到过系统卡顿的场景，当我们想要解决系统瓶颈时，究竟该如何选择？</p>
 <p>欢迎观看系统架构设计系列内容，今天我们聊一下系统架构设计中的扩展性。</p>
 <p>今天我们讲一个梦想书城的线上书店的故事。梦想书城有两个主要功能：查询、下单。</p>
@@ -244,7 +252,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/what_is_a_good_api/" class="prev" rel="prev" title="定义一个好的API"><i class="fas fa-angle-left fa-fw"></i>定义一个好的API</a></div>
+    <div class="post-nav"><a href="/what_is_a_good_api/" class="prev" rel="prev" title="定义一个好的API"><i class="fas fa-angle-left fa-fw"></i>定义一个好的API</a>
+            <a href="/lambda_concurrency/" class="next" rel="next" title="Lambda并发测试">Lambda并发测试<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="twikoo"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.

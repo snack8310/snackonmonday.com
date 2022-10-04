@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">在AWS上部署一个Lambda函数 - Snack On Monday</title><meta name="Description" content="了解AWS的Lambda函数，体验AWS上无服务化应用和API网关的部署过程"><meta property="og:title" content="在AWS上部署一个Lambda函数" />
+<meta property="og:description" content="了解AWS的Lambda函数，体验AWS上无服务化应用和API网关的部署过程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.snackonmonday.com/make_a_lambda_in_aws/" /><meta property="og:image" content="http://www.snackonmonday.com/images/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-02T16:42:31+08:00" />
+<meta property="article:modified_time" content="2022-02-02T16:42:31+08:00" /><meta property="og:site_name" content="周一的下午茶" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://www.snackonmonday.com/images/avatar.webp"/>
+
+<meta name="twitter:title" content="在AWS上部署一个Lambda函数"/>
+<meta name="twitter:description" content="了解AWS的Lambda函数，体验AWS上无服务化应用和API网关的部署过程"/>
+<meta name="application-name" content="DoIt">
+<meta name="apple-mobile-web-app-title" content="DoIt">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.snackonmonday.com/make_a_lambda_in_aws/" /><link rel="prev" href="http://www.snackonmonday.com/serverless/" /><link rel="next" href="http://www.snackonmonday.com/lambda_processor/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <meta name="google-site-verification" content="MQ8DNu27ayX6B_4ObiEDK09vGr1fdy7kOAnbd09hJk4" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "在AWS上部署一个Lambda函数",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/www.snackonmonday.com\/make_a_lambda_in_aws\/"
+        },"image": ["http:\/\/www.snackonmonday.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1617 ,
+        "url": "http:\/\/www.snackonmonday.com\/make_a_lambda_in_aws\/","datePublished": "2022-02-02T16:42:31+08:00","dateModified": "2022-02-02T16:42:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/www.snackonmonday.com\/images\/avatar.webp",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "周一的下午茶"
+            },"description": "了解AWS的Lambda函数，体验AWS上无服务化应用和API网关的部署过程"
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">在AWS上部署一个Lambda函数</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/snack8310" title="Author" target="_blank" rel="noopener noreffer author" class="author">周一的下午茶</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-02">2022-02-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-02-02">2022-02-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1617 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/make_a_lambda_in_aws/" class="leancloud_visitors" data-flag-title="在AWS上部署一个Lambda函数">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count id=twikoo_visitors></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/make_a_lambda_in_aws/" class="comment_count" data-flag-title="在AWS上部署一个Lambda函数">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是lambda函数">什么是Lambda函数</a></li>
+    <li><a href="#lambda的优势">Lambda的优势</a></li>
+    <li><a href="#aws-lambda实践">AWS Lambda实践</a>
+      <ul>
+        <li><a href="#基本使用">基本使用</a></li>
+        <li><a href="#基本概念">基本概念</a></li>
+        <li><a href="#核心函数解读">核心函数解读</a></li>
+        <li><a href="#创建层">创建层</a></li>
+        <li><a href="#部署函数">部署函数</a></li>
+        <li><a href="#运行测试">运行测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#部署一个api网关提供面向http的访问">部署一个API网关，提供面向HTTP的访问。</a></li>
+    <li><a href="#lambda-和-eksk8s的对比">Lambda 和 EKS（K8s）的对比</a></li>
+    <li><a href="#参照文章">参照文章</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition warning open">
+                <div class="details-summary admonition-title">
+                    <i class="icon fas fa-exclamation-triangle fa-fwwarning"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
+                </div>
+                <div class="details-content">
+                    <div class="admonition-content">
+                        本文最后更新于 <span class="timeago" datetime="2022-02-02T16:42:31" title="February 2, 2022">2022-02-02</span>，文中内容可能已过时。</div>
+                </div>
+            </div><h2 id="什么是lambda函数" class="headerLink">
+    <a href="#%e4%bb%80%e4%b9%88%e6%98%aflambda%e5%87%bd%e6%95%b0" class="header-mark"></a>什么是Lambda函数</h2><p>Lambda是AWS面向开发人员推出的应用层级Serverless解决方案。使用通过符合Lambda规范的代码，在AWS的环境上快速部署线上使用。通过配置支持自动扩容，安全，权限，网关等，完全屏蔽底层服务器管理的功能。</p>
+<h2 id="lambda的优势" class="headerLink">
+    <a href="#lambda%e7%9a%84%e4%bc%98%e5%8a%bf" class="header-mark"></a>Lambda的优势</h2><p>根据AWS的Blog的宣传，我们看到Serverless的优势包括一下几个点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 无服务器管理
+# 连续缩放
+# 毫秒级
+# 丰富生态
+# 增加创新
+</code></pre></td></tr></table>
+</div>
+</div><p>我们部署一个Lambda，体验一下这些功能点。</p>
+<h2 id="aws-lambda实践" class="headerLink">
+    <a href="#aws-lambda%e5%ae%9e%e8%b7%b5" class="header-mark"></a>AWS Lambda实践</h2><h3 id="基本使用" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" class="header-mark"></a>基本使用</h3><p>Lambda的函数开发，支持多种语言版本，包括Node.js 12.X，14.X, .Net Core 3.1, Python3.6-3.9, Ruby2.7,Java 8,11等，我们开发一个Java版本的函数。
+可以通过本地IDE编写，也可以通过AWS提供的线上控制台，工具包等多种开发环境。</p>
+<p>我们通过Java版本来体验一下。
+本文代码可以在</p>
+<blockquote>
+<p><a href="https://github.com/snack8310/my-first-lambda" target="_blank" rel="noopener noreffer">https://github.com/snack8310/my-first-lambda</a></p>
+</blockquote>
+<p>下载。本案例是个使用gradle的Springboot的工程。</p>
+<p>也可以参照官方推荐的JAVA DEMO</p>
+<blockquote>
+<p><a href="https://github.com/awsdocs/aws-lambda-developer-guide/tree/main/sample-apps/blank-java" target="_blank" rel="noopener noreffer">https://github.com/awsdocs/aws-lambda-developer-guide/tree/main/sample-apps/blank-java</a></p>
+</blockquote>
+<h3 id="基本概念" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" class="header-mark"></a>基本概念</h3><p>Function：核心代码。
+Trigger：触发器。例如APIGateway，SNS等，用来调用函数的资源。
+Event：调用函数的数据。
+Layer：Lambda 层是可以包含其他代码或其他内容的 .zip 文件归档。层可以包含库、自定义运行时、数据或配置文件。
+其他的，不影响使用，可以慢慢扩展。</p>
+<h3 id="核心函数解读" class="headerLink">
+    <a href="#%e6%a0%b8%e5%bf%83%e5%87%bd%e6%95%b0%e8%a7%a3%e8%af%bb" class="header-mark"></a>核心函数解读</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">public class MyFirstLambdaRequestHandler implements RequestHandler&lt;APIGatewayProxyRequestEvent, Object&gt; {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyFirstLambdaRequestHandler.class);
+
+    @Override
+    public Object handleRequest(APIGatewayProxyRequestEvent input, Context context) {
+        logger.info(&#34;MyFirstLambdaRequestHandler: &#34; + input.getBody());
+        return new APIGatewayProxyResponseEvent().withBody(&#34;Hello world, &#34; + input.getBody()).withStatusCode(200);
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>代码引入了APIGateway调用方式的函数代理，做了简单的函数名称打印，准备做一个API网关调用的展示。
+这个代码就是函数的入口和全部业务实现。</p>
+<h3 id="创建层" class="headerLink">
+    <a href="#%e5%88%9b%e5%bb%ba%e5%b1%82" class="header-mark"></a>创建层</h3><p>Layer（层）是个可选项，一个函数最多添加5层。层的引入，是为了缩小核心代码上传的部署成本，促进代码共享和责任分离，把公共部分，主要的jar包，放到公共层中，减少核心业务代码的变更成本。
+执行Readme中的层编译代码生成层</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set -eo pipefail
+gradle -q packageLibs
+mv build/distributions/my-first-lambda-0.0.1-SNAPSHOT.zip build/distributions/my-first-lambda-layer-0.0.1.zip    
+</code></pre></td></tr></table>
+</div>
+</div><p>按照下属步骤部署一个新层</p>
+<ol>
+<li>添加层
+<img
+        class="lazyload"
+        data-src="./img/addlayer.png"
+        data-srcset="./img/addlayer.png, ./img/addlayer.png 1.5x, ./img/addlayer.png 2x"
+        data-sizes="auto"
+        alt="./img/addlayer.png"
+        title="部署层1"
+    /></li>
+<li>创建层
+<img
+        class="lazyload"
+        data-src="./img/addlayer2.png"
+        data-srcset="./img/addlayer2.png, ./img/addlayer2.png 1.5x, ./img/addlayer2.png 2x"
+        data-sizes="auto"
+        alt="./img/addlayer2.png"
+        title="部署层2"
+    /></li>
+<li>创建完成
+<img
+        class="lazyload"
+        data-src="./img/addlayer3.png"
+        data-srcset="./img/addlayer3.png, ./img/addlayer3.png 1.5x, ./img/addlayer3.png 2x"
+        data-sizes="auto"
+        alt="./img/addlayer3.png"
+        title="部署层3"
+    /></li>
+</ol>
+<h3 id="部署函数" class="headerLink">
+    <a href="#%e9%83%a8%e7%bd%b2%e5%87%bd%e6%95%b0" class="header-mark"></a>部署函数</h3><p>执行Readme中的层编译代码生成层</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set -eo pipefail
+gradle build
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>
+<p>按照下属步骤部署一个函数
+<img
+        class="lazyload"
+        data-src="./img/function.png"
+        data-srcset="./img/function.png, ./img/function.png 1.5x, ./img/function.png 2x"
+        data-sizes="auto"
+        alt="./img/function.png"
+        title="部署函数1"
+    /></p>
+</li>
+<li>
+<p>修改运行时设置的处理程序
+<img
+        class="lazyload"
+        data-src="./img/function2.png"
+        data-srcset="./img/function2.png, ./img/function2.png 1.5x, ./img/function2.png 2x"
+        data-sizes="auto"
+        alt="./img/function2.png"
+        title="部署函数2"
+    /></p>
+</li>
+</ol>
+<h3 id="运行测试" class="headerLink">
+    <a href="#%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95" class="header-mark"></a>运行测试</h3><p>可以在本画面进行基本的调用测试</p>
+<p>选择测试，可以直接点击测试，也可以模拟一个ApiGateway的调用，内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
+  &#34;body&#34;: &#34;snack&#34;,
+  &#34;isBase64Encoded&#34;: true
+}
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>执行测试
+<img
+        class="lazyload"
+        data-src="./img/test.png"
+        data-srcset="./img/test.png, ./img/test.png 1.5x, ./img/test.png 2x"
+        data-sizes="auto"
+        alt="./img/test.png"
+        title="测试"
+    /></li>
+<li>执行成功。点击（日志），可以看到这次的测试结果
+<img
+        class="lazyload"
+        data-src="./img/test_result.png"
+        data-srcset="./img/test_result.png, ./img/test_result.png 1.5x, ./img/test_result.png 2x"
+        data-sizes="auto"
+        alt="./img/test_result.png"
+        title="测试结果"
+    /></li>
+</ol>
+<p>到此为止，我们已经部署了一个线上的应用服务。</p>
+<h2 id="部署一个api网关提供面向http的访问" class="headerLink">
+    <a href="#%e9%83%a8%e7%bd%b2%e4%b8%80%e4%b8%aaapi%e7%bd%91%e5%85%b3%e6%8f%90%e4%be%9b%e9%9d%a2%e5%90%91http%e7%9a%84%e8%ae%bf%e9%97%ae" class="header-mark"></a>部署一个API网关，提供面向HTTP的访问。</h2><ol>
+<li>创建网关
+<img
+        class="lazyload"
+        data-src="./img/apigateway.png"
+        data-srcset="./img/apigateway.png, ./img/apigateway.png 1.5x, ./img/apigateway.png 2x"
+        data-sizes="auto"
+        alt="./img/apigateway.png"
+        title="创建网关"
+    /></li>
+<li>创建资源
+<img
+        class="lazyload"
+        data-src="./img/apigateway1.png"
+        data-srcset="./img/apigateway1.png, ./img/apigateway1.png 1.5x, ./img/apigateway1.png 2x"
+        data-sizes="auto"
+        alt="./img/apigateway1.png"
+        title="创建资源"
+    /></li>
+<li>创建方法
+<img
+        class="lazyload"
+        data-src="./img/apigateway2.png"
+        data-srcset="./img/apigateway2.png, ./img/apigateway2.png 1.5x, ./img/apigateway2.png 2x"
+        data-sizes="auto"
+        alt="./img/apigateway2.png"
+        title="创建方法"
+    /></li>
+<li>部署网关
+<img
+        class="lazyload"
+        data-src="./img/apigateway3.png"
+        data-srcset="./img/apigateway3.png, ./img/apigateway3.png 1.5x, ./img/apigateway3.png 2x"
+        data-sizes="auto"
+        alt="./img/apigateway3.png"
+        title="部署网关"
+    /></li>
+</ol>
+<p>AWS已经帮我们生成了一个对外可访问的网关，本地执行CURL，已经可以访问到。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">huisheng@MacBook-Pro ~ % curl -X GET https://qvo9fbweyf.execute-api.us-east-1.amazonaws.com/dev/lambda -d &#39;{&#34;body&#34;:&#34;snack&#34;}&#39;
+
+{&#34;statusCode&#34;:200,&#34;body&#34;:&#34;Hello world, snack&#34;}%                                                                        huisheng@MacBook-Pro ~ % 
+
+</code></pre></td></tr></table>
+</div>
+</div><p>到现在为止，在没有任何关于服务器的设定配置的情况下，我们已经在互联网上部署了一个对外提供服务的应用。整个过程非常简单方便。小小的体验了一把无服务化。
+后续我们会针对Lambda的函数特点做一些简单的测试，包括连续缩放和性能。</p>
+<h2 id="lambda-和-eksk8s的对比" class="headerLink">
+    <a href="#lambda-%e5%92%8c-eksk8s%e7%9a%84%e5%af%b9%e6%af%94" class="header-mark"></a>Lambda 和 EKS（K8s）的对比</h2><p>截止到本文发表，EKS已经是个云原生毕业，经得住大规模商业化的考验的成熟产品。可以适配多种云环境，支撑面向应用的屏蔽底层容器环境的差异性。但需要具备ec2/pod/container级别的处理能力，这与通常的业务实现的技术领域不同。
+Lambda这类Serverless服务，现在还是在经历高速商业化发展的初期。现在有一些制约：有一定的代码侵入性，并且尚不支持一个标准协议提供跨平台迁移性。系统设计层面，对比传统的领域模型，也要有一定的理念转变。但优点也非常突：屏蔽了底层容器级别的技术处理复杂度，而且在经济上有很大的提升空间。
+可以根据具体的项目场景和资源配置，灵活的选择这两种方案。</p>
+<p>个人角度看，他们可能不是竞争对手的关系，而是一种发展关系。</p>
+<blockquote>
+<p>无服务器对于K8s，就像K8s对于容器一样。</p>
+</blockquote>
+<h2 id="参照文章" class="headerLink">
+    <a href="#%e5%8f%82%e7%85%a7%e6%96%87%e7%ab%a0" class="header-mark"></a>参照文章</h2><p><a href="https://docs.aws.amazon.com/zh_cn/lambda/index.html" target="_blank" rel="noopener noreffer">https://docs.aws.amazon.com/zh_cn/lambda/index.html</a></p>
+<p><a href="https://docs.aws.amazon.com/zh_cn/whitepapers/latest/security-overview-aws-lambda/benefits-of-lambda.html" target="_blank" rel="noopener noreffer">https://docs.aws.amazon.com/zh_cn/whitepapers/latest/security-overview-aws-lambda/benefits-of-lambda.html</a></p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-02-02</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://www.snackonmonday.com/make_a_lambda_in_aws/"><i class="fab fa-linkedin fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/serverless/" class="prev" rel="prev" title="Serverless"><i class="fas fa-angle-left fa-fw"></i>Serverless</a>
+            <a href="/lambda_processor/" class="next" rel="next" title="Lambda的线程数">Lambda的线程数<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/snack8310" target="_blank" rel="noopener noreferrer">周一的下午茶</a></span></div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                                
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                                
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://doit-docs-comment-twikoo.vercel.app/","lang":"zh-cn"}},"search":{"algoliaAppID":"5YGRNRQK1G","algoliaIndex":"zh_cn_index","algoliaSearchKey":"0ff6874805de24b84aa1d5ebccad56cd","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"sharerjs":true};</script><script type="text/javascript" src="/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/js/twikoo.min.js" defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script></div>
+</body>
+
+</html>

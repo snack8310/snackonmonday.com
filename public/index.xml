@@ -4,21 +4,77 @@
         <link>http://www.snackonmonday.com/</link>
         <description>周一的下午茶</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>snack8310@outlook.com (周一的下午茶)</managingEditor>
-            <webMaster>snack8310@outlook.com (周一的下午茶)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 27 Dec 2021 15:27:12 &#43;0800</lastBuildDate>
+            <webMaster>snack8310@outlook.com (周一的下午茶)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Oct 2022 18:18:39 &#43;0800</lastBuildDate>
             <atom:link href="http://www.snackonmonday.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>系统设计中的扩展性</title>
-    <link>http://www.snackonmonday.com/scale_in_architecture/</link>
-    <pubDate>Mon, 27 Dec 2021 15:27:12 &#43;0800</pubDate><author>
+    <title>用rust开发一个短链接Server</title>
+    <link>http://www.snackonmonday.com/make_a_rust_web_server/</link>
+    <pubDate>Sat, 01 Oct 2022 18:18:39 &#43;0800</pubDate><author>
         <name>周一的下午茶</name>
-    </author><guid>http://www.snackonmonday.com/scale_in_architecture/</guid>
-    <description><![CDATA[架构设计中的扩展性在项目开发中，大家一定遇到过系统卡顿的场景，当我们想要解决系统瓶颈时，究竟该如何选择？ 欢迎观看系统架构设计系列内容，今天我]]></description>
+    </author><guid>http://www.snackonmonday.com/make_a_rust_web_server/</guid>
+    <description><![CDATA[安装Rust创建一个新项目cargo new hello worldcargo run/build 安装frameworkactix/rocket hello world in framework安装数据库disiel/s]]></description>
 </item><item>
-    <title>定义一个好的API</title>
-    <link>http://www.snackonmonday.com/what_is_a_good_api/</link>
-    <pubDate>Mon, 27 Dec 2021 15:25:39 &#43;0800</pubDate><author>
+    <title>在应用层实现数据仓库</title>
+    <link>http://www.snackonmonday.com/data_warehouse_in_apps/</link>
+    <pubDate>Mon, 15 Aug 2022 17:24:04 &#43;0800</pubDate><author>
         <name>周一的下午茶</name>
-    </author><guid>http://www.snackonmonday.com/what_is_a_good_api/</guid>
-    <description><![CDATA[大家好，今天我们聊一下什么是API，以及如何设计一个好的API。 什么是API？举个现实场景的例子，我们去餐厅吃饭，通过菜单了解到餐厅提供的美]]></description>
+    </author><guid>http://www.snackonmonday.com/data_warehouse_in_apps/</guid>
+    <description><![CDATA[需求场景实现方式实现细节]]></description>
+</item><item>
+    <title>选择自动化测试-一个降成本的选择</title>
+    <link>http://www.snackonmonday.com/api_test_automation/</link>
+    <pubDate>Wed, 20 Jul 2022 17:25:51 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/api_test_automation/</guid>
+    <description><![CDATA[测试的本质测试价值现在软件开发领域中，基于狭隘的功能产品测试定义，测试一直是一个成本投入和系统质量的平衡产物。 常见的测试问题基于成本投入的问]]></description>
+</item><item>
+    <title>2B的平台工具的自产转自销？</title>
+    <link>http://www.snackonmonday.com/2b_saas_modularity_exploration/</link>
+    <pubDate>Thu, 14 Jul 2022 10:46:00 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/2b_saas_modularity_exploration/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Prometheus中increase计算的初始值问题</title>
+    <link>http://www.snackonmonday.com/prometheus_increase_from_zero/</link>
+    <pubDate>Sun, 24 Apr 2022 15:23:55 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/prometheus_increase_from_zero/</guid>
+    <description><![CDATA[Prometheus计算增量的场合，遇到了初始值计算偏差的问题，无法得到准确的增量]]></description>
+</item><item>
+    <title>RabbitMQ 对比 Apache Kafka</title>
+    <link>http://www.snackonmonday.com/rabbitmq_vs_kafka/</link>
+    <pubDate>Sat, 19 Mar 2022 16:01:22 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/rabbitmq_vs_kafka/</guid>
+    <description><![CDATA[RabbitMQ和ApacheKafka的差异，什么时候选择哪一款？]]></description>
+</item><item>
+    <title>部署Trojan</title>
+    <link>http://www.snackonmonday.com/deploy_trojan_in_aws_ec2/</link>
+    <pubDate>Sun, 06 Feb 2022 16:00:06 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/deploy_trojan_in_aws_ec2/</guid>
+    <description><![CDATA[AWS EC2 Trojan 部署]]></description>
+</item><item>
+    <title>个人使用技术栈</title>
+    <link>http://www.snackonmonday.com/technical-graph/</link>
+    <pubDate>Fri, 04 Feb 2022 13:03:45 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/technical-graph/</guid>
+    <description><![CDATA[个人使用技术栈]]></description>
+</item><item>
+    <title>Lambda的线程数</title>
+    <link>http://www.snackonmonday.com/lambda_processor/</link>
+    <pubDate>Thu, 03 Feb 2022 13:03:45 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/lambda_processor/</guid>
+    <description><![CDATA[测试Lambda函数的线程数量和内存配置影响]]></description>
+</item><item>
+    <title>在AWS上部署一个Lambda函数</title>
+    <link>http://www.snackonmonday.com/make_a_lambda_in_aws/</link>
+    <pubDate>Wed, 02 Feb 2022 16:42:31 &#43;0800</pubDate><author>
+        <name>周一的下午茶</name>
+    </author><guid>http://www.snackonmonday.com/make_a_lambda_in_aws/</guid>
+    <description><![CDATA[了解AWS的Lambda函数，体验AWS上无服务化应用和API网关的部署过程]]></description>
 </item></channel>
 </rss>

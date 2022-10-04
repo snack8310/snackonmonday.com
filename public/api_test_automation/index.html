@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">选择自动化测试-一个降成本的选择 - Snack On Monday</title><meta name="Description" content="周一的下午茶"><meta property="og:title" content="选择自动化测试-一个降成本的选择" />
+<meta property="og:description" content="测试的本质测试价值现在软件开发领域中，基于狭隘的功能产品测试定义，测试一直是一个成本投入和系统质量的平衡产物。 常见的测试问题基于成本投入的问" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.snackonmonday.com/api_test_automation/" /><meta property="og:image" content="http://www.snackonmonday.com/images/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-20T17:25:51+08:00" />
+<meta property="article:modified_time" content="2022-07-20T17:25:51+08:00" /><meta property="og:site_name" content="周一的下午茶" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://www.snackonmonday.com/images/avatar.webp"/>
+
+<meta name="twitter:title" content="选择自动化测试-一个降成本的选择"/>
+<meta name="twitter:description" content="测试的本质测试价值现在软件开发领域中，基于狭隘的功能产品测试定义，测试一直是一个成本投入和系统质量的平衡产物。 常见的测试问题基于成本投入的问"/>
+<meta name="application-name" content="DoIt">
+<meta name="apple-mobile-web-app-title" content="DoIt">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.snackonmonday.com/api_test_automation/" /><link rel="prev" href="http://www.snackonmonday.com/2b_saas_modularity_exploration/" /><link rel="next" href="http://www.snackonmonday.com/data_warehouse_in_apps/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <meta name="google-site-verification" content="MQ8DNu27ayX6B_4ObiEDK09vGr1fdy7kOAnbd09hJk4" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "选择自动化测试-一个降成本的选择",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/www.snackonmonday.com\/api_test_automation\/"
+        },"image": ["http:\/\/www.snackonmonday.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  2794 ,
+        "url": "http:\/\/www.snackonmonday.com\/api_test_automation\/","datePublished": "2022-07-20T17:25:51+08:00","dateModified": "2022-07-20T17:25:51+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/www.snackonmonday.com\/images\/avatar.webp",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "周一的下午茶"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">选择自动化测试-一个降成本的选择</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/snack8310" title="Author" target="_blank" rel="noopener noreffer author" class="author">周一的下午茶</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-07-20">2022-07-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-07-20">2022-07-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2794 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/api_test_automation/" class="leancloud_visitors" data-flag-title="选择自动化测试-一个降成本的选择">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count id=twikoo_visitors></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/api_test_automation/" class="comment_count" data-flag-title="选择自动化测试-一个降成本的选择">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#测试的本质">测试的本质</a>
+      <ul>
+        <li><a href="#测试价值">测试价值</a></li>
+        <li><a href="#常见的测试问题">常见的测试问题</a></li>
+        <li><a href="#测试问题的本质">测试问题的本质</a></li>
+      </ul>
+    </li>
+    <li><a href="#选择自动化测试">选择自动化测试</a>
+      <ul>
+        <li><a href="#自动化测试意义">自动化测试意义</a></li>
+        <li><a href="#自动化测试的三个层级">自动化测试的三个层级</a></li>
+        <li><a href="#怎么选择使用哪部分的自动化测试">怎么选择使用哪部分的自动化测试</a></li>
+        <li><a href="#怎么做接口自动化测试">怎么做接口自动化测试</a>
+          <ul>
+            <li><a href="#系统构建">系统构建</a></li>
+          </ul>
+        </li>
+        <li><a href="#基础环境配置">基础环境配置</a></li>
+        <li><a href="#测试人员本地">测试人员本地</a></li>
+        <li><a href="#测试脚本的demo">测试脚本的demo</a></li>
+      </ul>
+    </li>
+    <li><a href="#自动化测试的心得">自动化测试的心得</a>
+      <ul>
+        <li><a href="#与传统测试的区别">与传统测试的区别</a></li>
+        <li><a href="#自动化测试的优点">自动化测试的优点</a></li>
+        <li><a href="#自动化测试的缺点">自动化测试的缺点</a></li>
+        <li><a href="#关于测试人员的变化">关于测试人员的变化</a></li>
+        <li><a href="#接口自动化的改善关注指标">接口自动化的改善关注指标</a></li>
+        <li><a href="#如何评估收益">如何评估收益</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="测试的本质" class="headerLink">
+    <a href="#%e6%b5%8b%e8%af%95%e7%9a%84%e6%9c%ac%e8%b4%a8" class="header-mark"></a>测试的本质</h2><h3 id="测试价值" class="headerLink">
+    <a href="#%e6%b5%8b%e8%af%95%e4%bb%b7%e5%80%bc" class="header-mark"></a>测试价值</h3><p>现在软件开发领域中，基于狭隘的功能产品测试定义，测试一直是一个成本投入和系统质量的平衡产物。</p>
+<h3 id="常见的测试问题" class="headerLink">
+    <a href="#%e5%b8%b8%e8%a7%81%e7%9a%84%e6%b5%8b%e8%af%95%e9%97%ae%e9%a2%98" class="header-mark"></a>常见的测试问题</h3><p>基于成本投入的问题，常见的问题也可以预想到：</p>
+<ol>
+<li>测试资源不足。</li>
+<li>遗漏的测试点造成了故障。</li>
+<li>改动造成其他业务收到影响。</li>
+<li>高并发的场合无法充分测试。</li>
+</ol>
+<p>另一个管理视角下：</p>
+<ol>
+<li>不好衡量测试资源的缺口</li>
+<li>测试并不容易体现个人价值，善战者无赫赫之功。</li>
+<li>测试作业强依赖人的主观能力。</li>
+</ol>
+<h3 id="测试问题的本质" class="headerLink">
+    <a href="#%e6%b5%8b%e8%af%95%e9%97%ae%e9%a2%98%e7%9a%84%e6%9c%ac%e8%b4%a8" class="header-mark"></a>测试问题的本质</h3><p>细分上述问题，会看到主要的问题，出现在“测试人员”这个资源点。
+这个资源点数量充分，则问题就会比较少；资源点能力好，则问题也会比较少。
+回到测试价值的说明，测试是个成本投入和系统质量平衡的产物，注定不会有富裕的资源，有什么更好的办法解决。</p>
+<h2 id="选择自动化测试" class="headerLink">
+    <a href="#%e9%80%89%e6%8b%a9%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" class="header-mark"></a>选择自动化测试</h2><h3 id="自动化测试意义" class="headerLink">
+    <a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e6%84%8f%e4%b9%89" class="header-mark"></a>自动化测试意义</h3><p>为了尝试解决“测试人员”资源，大家逐渐尝试使用一些工具去执行，行业里也产生了大量的自动化的测试概念和工具。
+比较典型的分类就是UI测试，接口测试，单元测试。</p>
+<h3 id="自动化测试的三个层级" class="headerLink">
+    <a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e7%9a%84%e4%b8%89%e4%b8%aa%e5%b1%82%e7%ba%a7" class="header-mark"></a>自动化测试的三个层级</h3><ul>
+<li>UI自动化：通过Web，移动端的操作录制等方式，验证系统用户操作的脚本</li>
+<li>接口自动化：面向服务端的接口，进行数据验证</li>
+<li>单元测试自动化：研发开发过程中，进行的开发单元的测试</li>
+</ul>
+<p>越往上，测试难度越大，测试构建成本越大。</p>
+<p>是不是越往下越好。也不是。
+单元测试接口，更多的是开发资源，这部分需要跟业务产出价值PK，开发效率的降低和质量的提升比，并没有明显的优势。</p>
+<h3 id="怎么选择使用哪部分的自动化测试" class="headerLink">
+    <a href="#%e6%80%8e%e4%b9%88%e9%80%89%e6%8b%a9%e4%bd%bf%e7%94%a8%e5%93%aa%e9%83%a8%e5%88%86%e7%9a%84%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" class="header-mark"></a>怎么选择使用哪部分的自动化测试</h3><p>还是基于成本和收益，平衡的看各自业务的情况进行选择。
+如果是一个偏金融交易支付，数字高敏感的，建议采用单元测试+接口自动化
+如果是一个偏用户体验的c端产品，优先UI自动化，防止因为一些zz的流程事故，造成的满意度下降。
+如果是一个新项目，需要快速落地，拿到市场反馈，建议-不要使用自动化工具。</p>
+<p>但是对于一般的项目来说，使用接口自动化测试，是可以长期降低测试资源成本的方案。</p>
+<h3 id="怎么做接口自动化测试" class="headerLink">
+    <a href="#%e6%80%8e%e4%b9%88%e5%81%9a%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" class="header-mark"></a>怎么做接口自动化测试</h3><p>当然上述一个概念性的评估，我们来看一下，具体怎么构建一个自动化的测试。这个行业里比较成熟，引入一套接口测试自动化框架，还是很快的。</p>
+<h4 id="系统构建" class="headerLink">
+    <a href="#%e7%b3%bb%e7%bb%9f%e6%9e%84%e5%bb%ba" class="header-mark"></a>系统构建</h4><p>这类框架基本特点是，脚本化语言+数据统计+报告工具。
+自动化测试框架有很多种，例如UI的 Selenium， Katalon，接口的 Allure，很多大厂也有自研的体系。
+Allure是我们选择的方案。
+整个核心模块是Python，Jenkins，Allue</p>
+<h3 id="基础环境配置" class="headerLink">
+    <a href="#%e5%9f%ba%e7%a1%80%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae" class="header-mark"></a>基础环境配置</h3><ol>
+<li>物理机，虚拟机还是容器化均可。安装Python，Jenkis，Allure的对应版本。</li>
+<li>我们是个容器化的构建环境，主要的时间花费在于建立一个基本的版本镜像。以及安装Jenkins，Allue后的插件配置上。</li>
+<li>打通代码编译脚本和Jenkins的访问环境，编译实时拉取最新的测试脚本。</li>
+<li>建立自动化项目和测试环境及数据库的访问授权，如果是一个空间下，可选择忽略。</li>
+<li>在编译环境下增加一个“钩子”，用来将来触发自动化脚本实施，进行自动化的回归。这一个可选，非必须。</li>
+</ol>
+<p>以上就是完整的自动化测试框架，
+额外提示，由于整个测试链路是在测试环境中构建，并不需要高可用的配置，但要尽量把存储配置做到备份，毕竟工具插件，及测试用例执行器是不停的修改，一旦故障丢失，重新配置还是很疼的。</p>
+<h3 id="测试人员本地" class="headerLink">
+    <a href="#%e6%b5%8b%e8%af%95%e4%ba%ba%e5%91%98%e6%9c%ac%e5%9c%b0" class="header-mark"></a>测试人员本地</h3><ol>
+<li>Python</li>
+<li>Allure</li>
+</ol>
+<h3 id="测试脚本的demo" class="headerLink">
+    <a href="#%e6%b5%8b%e8%af%95%e8%84%9a%e6%9c%ac%e7%9a%84demo" class="header-mark"></a>测试脚本的demo</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@allure.feature(&#39;查询数据源数据&#39;)
+class TestDatasource:
+
+    # 前置条件
+    @pytest.fixture(scope=&#39;class&#39;, autouse=True)
+    def setup_class(cls, initialize):
+        global host
+        host = initialize.get(&#39;avengers-datasource&#39;)
+
+    data_param,data_ids=read_yaml(__file__,&#39;queryDatasource.yml&#39;)
+    @allure.story(&#39;查询数据源数据&#39;)
+    @pytest.mark.parametrize(&#34;args&#34;,data_param,ids=data_ids)
+    def test_datasource(self,args):
+        
+        with allure.step(&#39;调用datasource-query接口&#39;):
+            response = DatasourceController(
+                host).query_datasourceReport(&#39;6&#39;, (args[&#39;body&#39;]))
+            LogHandler.info(response)
+            assert response[&#39;code&#39;] == 0,&#39;查询数据失败&#39;
+            assert args[&#39;expected&#39;]==response[&#39;data&#39;],&#39;数据比对不上&#39;
+            
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="自动化测试的心得" class="headerLink">
+    <a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e7%9a%84%e5%bf%83%e5%be%97" class="header-mark"></a>自动化测试的心得</h2><h3 id="与传统测试的区别" class="headerLink">
+    <a href="#%e4%b8%8e%e4%bc%a0%e7%bb%9f%e6%b5%8b%e8%af%95%e7%9a%84%e5%8c%ba%e5%88%ab" class="header-mark"></a>与传统测试的区别</h3><figure><a class="lightgallery" href="/api_test_automation/img/node-change.png" title="/api_test_automation/img/node-change.png" data-thumbnail="/api_test_automation/img/node-change.png" data-sub-html="<h2>流程节点的转变</h2>">
+        <img
+            class="lazyload"
+            data-src="img/node-change.png"
+            data-srcset="/api_test_automation/img/node-change.png, img/node-change.png 1.5x, /api_test_automation/img/node-change.png 2x"
+            data-sizes="auto"
+            alt="/api_test_automation/img/node-change.png"width="500"
+        />
+    </a><figcaption class="image-caption">流程节点的转变</figcaption>
+    </figure>
+<p>比较明显的改变：测试与编码流程没有前后节点关系，意味着：</p>
+<ol>
+<li>没有冒烟测试环节</li>
+<li>测试与开发资源投入时间无依赖</li>
+</ol>
+<p>图以外的差异：</p>
+<ol>
+<li>测试的主要时间花费在数据构建上。</li>
+<li>测试资源入场可前置，与开发并行。</li>
+<li>测试失败场景下，无需测试二次投入。</li>
+</ol>
+<h3 id="自动化测试的优点" class="headerLink">
+    <a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e7%9a%84%e4%bc%98%e7%82%b9" class="header-mark"></a>自动化测试的优点</h3><ol>
+<li>从实战来说，要达到一个稳定的系统质量，成本是一个比较明显的优点。
+做一个粗略的评估，假设一个项目的人力测试成本为1的化，投入测试脚本的时间，保守的说可能是1.5。那么如果项目的第二次迭代，这是非常普遍的事情，测试脚本的修改平均用不上0.5。也就是第二次迭代起，自动化的收益就已经可以持平。</li>
+<li>系统回归场景有显著的时间优势。</li>
+<li>可以更快速的实施压力测试和性能测试。</li>
+<li>可以有效避免重复的故障二次发生。</li>
+</ol>
+<h3 id="自动化测试的缺点" class="headerLink">
+    <a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95%e7%9a%84%e7%bc%ba%e7%82%b9" class="header-mark"></a>自动化测试的缺点</h3><ol>
+<li>对于新项目的测试用例脚本编写时间显著拉长，意味着探索类项目，需要快速反馈的项目，不适用同时执行自动化。</li>
+<li>需要配合测试增加一些数据制作的接口，这是额外增加的成本。</li>
+<li>自动化并不能发现新问题。引入自动化后，降低的故障率是重复的错误部分，并不能防患于未然。</li>
+<li>对人员能力要求高。这部分是引入自动化测试后遇到的最明显的问题。</li>
+</ol>
+<h3 id="关于测试人员的变化" class="headerLink">
+    <a href="#%e5%85%b3%e4%ba%8e%e6%b5%8b%e8%af%95%e4%ba%ba%e5%91%98%e7%9a%84%e5%8f%98%e5%8c%96" class="header-mark"></a>关于测试人员的变化</h3><p>自动化测试，是把测试工作编程一些代码逻辑，虽然这个代码逻辑的脚本不需要像项目工程的高要求，但本身这个动作已经属于开发的一部分，对很多测试人员来说是不适应的。
+可以尝试做以下的事情：</p>
+<ol>
+<li>测试作为验收人员，写测试用例，研发完成测试脚本。</li>
+<li>引入部分开发人员，构建基本的脚本，测试同学在基础上去改造，二次加工。修改要比新建容易很多。</li>
+<li>测试开发一体。把脚本做成开发作业的一部分。测试直接验收UI。部分测试角色转变为测试开发，以提供更好的数据构建环境，降低测试脚本开发成本。</li>
+</ol>
+<p>越往下，对测试的角色要求越低，对测试的能力要求越高。可以根据不同的实际情况，做选择。
+必要的情况下，引入新的外部资源。</p>
+<h3 id="接口自动化的改善关注指标" class="headerLink">
+    <a href="#%e6%8e%a5%e5%8f%a3%e8%87%aa%e5%8a%a8%e5%8c%96%e7%9a%84%e6%94%b9%e5%96%84%e5%85%b3%e6%b3%a8%e6%8c%87%e6%a0%87" class="header-mark"></a>接口自动化的改善关注指标</h3><ul>
+<li>需求量和测试用例比例 &mdash; 意味着新编写的用例越来越少，测试作业量的减少。</li>
+<li>系统故障和测试用例数量  &mdash; 系统稳定性的提升，重复事故的减少。</li>
+<li>回归用例测试执行时长和频率  &mdash; 回归时间越短，频率越高，系统越稳定。</li>
+</ul>
+<h3 id="如何评估收益" class="headerLink">
+    <a href="#%e5%a6%82%e4%bd%95%e8%af%84%e4%bc%b0%e6%94%b6%e7%9b%8a" class="header-mark"></a>如何评估收益</h3><p>理想情况下，自动化测试的收益，会在测试用例密度到达某个临界点后，显著提高。从而达到更好的测试开发人员对比。产品上线的密度增加，系统故障率的降低。
+回归到测试的本质，长期来看，关注下述的指标。</p>
+<ol>
+<li>测试开发比。</li>
+<li>测试事故率。</li>
+</ol>
+<h2 id="总结" class="headerLink">
+    <a href="#%e6%80%bb%e7%bb%93" class="header-mark"></a>总结</h2><p>自动化测试的价值，即使没做过的人也能想象得到。但什么时机选择自动化，选择什么类型的，以及是否使用单元测试，使用UI自动化等，都要回归测试的本质。看投入的成本，带来的是否是正向的收益。究其根本，测试是个用来规避风险，而不是创造价值的，很容易被大家轻视。</p>
+<ul>
+<li>构建一套接口自动化测试框架并不复杂</li>
+<li>引入之后会有一些人员和流程的适配成本</li>
+<li>从实战来说，这是个长期来看有效降低成本的项目，也是比较容易快速试错的项目，值得花时间去尝试。</li>
+</ul>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-07-20</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://www.snackonmonday.com/api_test_automation/"><i class="fab fa-linkedin fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2b_saas_modularity_exploration/" class="prev" rel="prev" title="2B的平台工具的自产转自销？"><i class="fas fa-angle-left fa-fw"></i>2B的平台工具的自产转自销？</a>
+            <a href="/data_warehouse_in_apps/" class="next" rel="next" title="在应用层实现数据仓库">在应用层实现数据仓库<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/snack8310" target="_blank" rel="noopener noreferrer">周一的下午茶</a></span></div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                                
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                                
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://doit-docs-comment-twikoo.vercel.app/","lang":"zh-cn"}},"search":{"algoliaAppID":"5YGRNRQK1G","algoliaIndex":"zh_cn_index","algoliaSearchKey":"0ff6874805de24b84aa1d5ebccad56cd","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"sharerjs":true};</script><script type="text/javascript" src="/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/js/twikoo.min.js" defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script></div>
+</body>
+
+</html>

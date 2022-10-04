@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">用rust开发一个短链接Server - Snack On Monday</title><meta name="Description" content="周一的下午茶"><meta property="og:title" content="用rust开发一个短链接Server" />
+<meta property="og:description" content="安装Rust创建一个新项目cargo new hello worldcargo run/build 安装frameworkactix/rocket hello world in framework安装数据库disiel/s" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.snackonmonday.com/make_a_rust_web_server/" /><meta property="og:image" content="http://www.snackonmonday.com/images/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-01T18:18:39+08:00" />
+<meta property="article:modified_time" content="2022-10-01T18:18:39+08:00" /><meta property="og:site_name" content="周一的下午茶" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://www.snackonmonday.com/images/avatar.webp"/>
+
+<meta name="twitter:title" content="用rust开发一个短链接Server"/>
+<meta name="twitter:description" content="安装Rust创建一个新项目cargo new hello worldcargo run/build 安装frameworkactix/rocket hello world in framework安装数据库disiel/s"/>
+<meta name="application-name" content="DoIt">
+<meta name="apple-mobile-web-app-title" content="DoIt">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.snackonmonday.com/make_a_rust_web_server/" /><link rel="prev" href="http://www.snackonmonday.com/data_warehouse_in_apps/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <meta name="google-site-verification" content="MQ8DNu27ayX6B_4ObiEDK09vGr1fdy7kOAnbd09hJk4" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "用rust开发一个短链接Server",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/www.snackonmonday.com\/make_a_rust_web_server\/"
+        },"image": ["http:\/\/www.snackonmonday.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  125 ,
+        "url": "http:\/\/www.snackonmonday.com\/make_a_rust_web_server\/","datePublished": "2022-10-01T18:18:39+08:00","dateModified": "2022-10-01T18:18:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/www.snackonmonday.com\/images\/avatar.webp",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "周一的下午茶"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">用rust开发一个短链接Server</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/snack8310" title="Author" target="_blank" rel="noopener noreffer author" class="author">周一的下午茶</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-10-01">2022-10-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-10-01">2022-10-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 125 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/make_a_rust_web_server/" class="leancloud_visitors" data-flag-title="用rust开发一个短链接Server">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count id=twikoo_visitors></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/make_a_rust_web_server/" class="comment_count" data-flag-title="用rust开发一个短链接Server">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安装rust">安装Rust</a></li>
+        <li><a href="#创建一个新项目">创建一个新项目</a></li>
+        <li><a href="#hello-world">hello world</a></li>
+        <li><a href="#安装framework">安装framework</a></li>
+        <li><a href="#hello-world-in-framework">hello world in framework</a></li>
+        <li><a href="#安装数据库">安装数据库</a></li>
+        <li><a href="#访问一个数据库查询">访问一个数据库查询</a></li>
+        <li><a href="#一个short-code项目">一个short code项目</a></li>
+        <li><a href="#api">api</a></li>
+        <li><a href="#以下需要思考是否需要介绍">以下需要思考是否需要介绍</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="安装rust" class="headerLink">
+    <a href="#%e5%ae%89%e8%a3%85rust" class="header-mark"></a>安装Rust</h3><h3 id="创建一个新项目" class="headerLink">
+    <a href="#%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e6%96%b0%e9%a1%b9%e7%9b%ae" class="header-mark"></a>创建一个新项目</h3><p>cargo new</p>
+<h3 id="hello-world" class="headerLink">
+    <a href="#hello-world" class="header-mark"></a>hello world</h3><p>cargo run/build</p>
+<h3 id="安装framework" class="headerLink">
+    <a href="#%e5%ae%89%e8%a3%85framework" class="header-mark"></a>安装framework</h3><p>actix/rocket</p>
+<h3 id="hello-world-in-framework" class="headerLink">
+    <a href="#hello-world-in-framework" class="header-mark"></a>hello world in framework</h3><h3 id="安装数据库" class="headerLink">
+    <a href="#%e5%ae%89%e8%a3%85%e6%95%b0%e6%8d%ae%e5%ba%93" class="header-mark"></a>安装数据库</h3><p>disiel/sqlx</p>
+<h3 id="访问一个数据库查询" class="headerLink">
+    <a href="#%e8%ae%bf%e9%97%ae%e4%b8%80%e4%b8%aa%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9f%a5%e8%af%a2" class="header-mark"></a>访问一个数据库查询</h3><h3 id="一个short-code项目" class="headerLink">
+    <a href="#%e4%b8%80%e4%b8%aashort-code%e9%a1%b9%e7%9b%ae" class="header-mark"></a>一个short code项目</h3><h3 id="api" class="headerLink">
+    <a href="#api" class="header-mark"></a>api</h3><ol>
+<li>create code</li>
+<li>get original url</li>
+<li>first page</li>
+</ol>
+<h3 id="以下需要思考是否需要介绍" class="headerLink">
+    <a href="#%e4%bb%a5%e4%b8%8b%e9%9c%80%e8%a6%81%e6%80%9d%e8%80%83%e6%98%af%e5%90%a6%e9%9c%80%e8%a6%81%e4%bb%8b%e7%bb%8d" class="header-mark"></a>以下需要思考是否需要介绍</h3><p>Docker部署</p>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-10-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://www.snackonmonday.com/make_a_rust_web_server/"><i class="fab fa-linkedin fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/data_warehouse_in_apps/" class="prev" rel="prev" title="在应用层实现数据仓库"><i class="fas fa-angle-left fa-fw"></i>在应用层实现数据仓库</a></div>
+</div>
+<div id="comments"><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/snack8310" target="_blank" rel="noopener noreferrer">周一的下午茶</a></span></div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                                
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                                
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://doit-docs-comment-twikoo.vercel.app/","lang":"zh-cn"}},"search":{"algoliaAppID":"5YGRNRQK1G","algoliaIndex":"zh_cn_index","algoliaSearchKey":"0ff6874805de24b84aa1d5ebccad56cd","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"sharerjs":true};</script><script type="text/javascript" src="/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/js/twikoo.min.js" defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script></div>
+</body>
+
+</html>

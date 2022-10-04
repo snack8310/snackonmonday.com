@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">个人使用技术栈 - Snack On Monday</title><meta name="Description" content="个人使用技术栈"><meta property="og:title" content="个人使用技术栈" />
+<meta property="og:description" content="个人使用技术栈" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.snackonmonday.com/technical-graph/" /><meta property="og:image" content="http://www.snackonmonday.com/images/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-04T13:03:45+08:00" />
+<meta property="article:modified_time" content="2022-02-04T13:03:45+08:00" /><meta property="og:site_name" content="周一的下午茶" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://www.snackonmonday.com/images/avatar.webp"/>
+
+<meta name="twitter:title" content="个人使用技术栈"/>
+<meta name="twitter:description" content="个人使用技术栈"/>
+<meta name="application-name" content="DoIt">
+<meta name="apple-mobile-web-app-title" content="DoIt">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.snackonmonday.com/technical-graph/" /><link rel="prev" href="http://www.snackonmonday.com/lambda_processor/" /><link rel="next" href="http://www.snackonmonday.com/deploy_trojan_in_aws_ec2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <meta name="google-site-verification" content="MQ8DNu27ayX6B_4ObiEDK09vGr1fdy7kOAnbd09hJk4" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "个人使用技术栈",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/www.snackonmonday.com\/technical-graph\/"
+        },"image": ["http:\/\/www.snackonmonday.com\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  2836 ,
+        "url": "http:\/\/www.snackonmonday.com\/technical-graph\/","datePublished": "2022-02-04T13:03:45+08:00","dateModified": "2022-02-04T13:03:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "http:\/\/www.snackonmonday.com\/images\/avatar.webp",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "周一的下午茶"
+            },"description": "个人使用技术栈"
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Snack On Monday"><span class="header-title-pre"><i class='far fa-edit fa-fw'></i></span>周一的下午茶</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/snack8310" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">个人使用技术栈</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="https://github.com/snack8310" title="Author" target="_blank" rel="noopener noreffer author" class="author">周一的下午茶</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-04">2022-02-04</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-02-04">2022-02-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2836 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/technical-graph/" class="leancloud_visitors" data-flag-title="个人使用技术栈">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count id=twikoo_visitors></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/technical-graph/" class="comment_count" data-flag-title="个人使用技术栈">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#编程语言">编程语言</a></li>
+    <li><a href="#技术框架">技术框架</a></li>
+    <li><a href="#架构模型">架构模型</a></li>
+    <li><a href="#数据存储">数据存储</a></li>
+    <li><a href="#基础服务">基础服务</a></li>
+    <li><a href="#部署">部署</a></li>
+    <li><a href="#开发工具">开发工具</a></li>
+    <li><a href="#设计">设计</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition warning open">
+                <div class="details-summary admonition-title">
+                    <i class="icon fas fa-exclamation-triangle fa-fwwarning"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
+                </div>
+                <div class="details-content">
+                    <div class="admonition-content">
+                        本文最后更新于 <span class="timeago" datetime="2022-02-04T13:03:45" title="February 4, 2022">2022-02-04</span>，文中内容可能已过时。</div>
+                </div>
+            </div><p>这篇文章，是受到这个博主的（https://www.bmpi.dev/dev/tech-stack-of-side-project/ ）的启发，记录一下自己这些年使用的并留下来的技术盏。</p>
+<p>一方面，可以对自己有更清楚的认识；另一方面，如果有人看这个私人博客，可以快速了解博主的技术水平，如若得不到价值，可减少不必要的时间浪费。</p>
+<h2 id="编程语言" class="headerLink">
+    <a href="#%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80" class="header-mark"></a>编程语言</h2><p>作为一个后端的程序开发设计人员，秉持着设计大于语言实现。但没有尝试更多的技术语言，无法在比较中有任何的发言权利，这点正在检讨中。</p>
+<ul>
+<li>JAVA：过去的很多年，一直在使用这一个模型。遇到项目的第一反应，使用gradle或maven去构建一个springboot的项目。这有效，但是似乎是个坏习惯，屏蔽了新技术的应用。</li>
+<li>GO：正在尝试使用GO，去替换业务中一个小型业务模块，促进对非语言依赖的RPC框架的使用。</li>
+<li>Python：使用Python给我女儿讲解一些可视化的编程课程。学习了一部分的Python语法。正在学习使用Python替代Excel作为特定场景计算应用。现在看大火的技术语言，在数据分析领域有高效，学习成本低等天然优势。</li>
+</ul>
+<h2 id="技术框架" class="headerLink">
+    <a href="#%e6%8a%80%e6%9c%af%e6%a1%86%e6%9e%b6" class="header-mark"></a>技术框架</h2><ul>
+<li>
+<p>Dubbo：用了很多年的Dubbo2.x的RPC框架，为数不多的认真的读过传输模型的核心代码。这个框架，使用的Netty的NIO，足够简单专注，成本低，速度快，适合小型团队的快速应用。但也存在很多被诟病的问题，启动扫描成本高，在庞大冗杂的业务系统面前，面对几千甚至更多的服务列表，单纯的服务治理对项目管理来说显得无能为力。好消息是2021年，3.0版本被发布出来，还尝试支持gRPC的通信，期待这个框架能够再次活跃起来。</p>
+</li>
+<li>
+<p>SpringCloud：如果说Dubbo是个服务治理框架，实际上的SpringCloud的全家桶更多的是面对微服务概念产生的一个服务管理生态。包括负载均衡，流量治理，熔断等等，特别是支持第七层的Rest服务调用，考虑到近年飞速发展的容器技术，丛云原生到服务网格等等，与dubbo相比，这两者就是兼容和不兼容的本质区别。SpringCloud背后还有想Netflix，Alibaba等大厂支持，还是当下JAVA领域最成熟的解决框架。</p>
+</li>
+<li>
+<p>Service Mesh：严格的说，这不是一个技术框架，而是要配合容器技术这种行业发展趋势，接触如gRPC这种跨语音的RPC解决方案。这个模型还在学习使用中，等掌握之后再更新。</p>
+</li>
+</ul>
+<h2 id="架构模型" class="headerLink">
+    <a href="#%e6%9e%b6%e6%9e%84%e6%a8%a1%e5%9e%8b" class="header-mark"></a>架构模型</h2><p>作为后端架构师，习惯性的做领域模型设计，拆分服务模型，支持服务级别快速拆分，支持服务级别快速扩容。过去几年的项目中，经历了底层环境变化，插件式的功能拼装，做了非常多的服务间的拆拆合合。深刻的体会到服务化“规范”的价值。</p>
+<ul>
+<li>
+<p>微服务：所有公司级别项目，都遵循这个服务模型，dubbo/springcloud的框架下的springboot的应用管理。</p>
+</li>
+<li>
+<p>Serverless：最近尝试将个人项目Serverless应用化，成本评估是主要原因，也看好几年内的这个领域的快速发展。</p>
+</li>
+</ul>
+<h2 id="数据存储" class="headerLink">
+    <a href="#%e6%95%b0%e6%8d%ae%e5%ad%98%e5%82%a8" class="header-mark"></a>数据存储</h2><p>数据处理是我们所有产品/应用的最终目的。过去工作中的主要数据存储工具，是数据库层级的Mysql和对象层级的Ceph。个人存储会在网盘文件中。现在逐渐在使用一些新鲜的事务。</p>
+<ul>
+<li>
+<p>Mysql：作为应用产品系统架构师，OLTP领域，还是首选Mysql，绝大多数的工作也是在这里，没什么说的。优缺点，网上很透彻了。</p>
+</li>
+<li>
+<p>Tidb：2020年引进到系统中。对比Mysql，它在亿级别单表上的操作上表现很好。在没使用Tidb前，为了避免做分库分表这个单向门操作，做了很多方案。包括影响业务的定期归档，冷热表分离，以及使用ElasticSearch做查询等。另一方面，Tidb还有一定的OLAP能力，具有小型的连表查询分析能力。对比Mysql来说，缺点是成本较高，一组高可用性最低模型需要八个节点。Mysql是三个。磁盘性能要求也比较高。他的分析能力也无法跟专门的分析性数据库对比。是一个主OLTP兼OLAP场景的不错的解决方案。</p>
+</li>
+<li>
+<p>Redis：Redis集群，主要以缓存的方式出现，提升系统的查询能力，常见的使用是加载Tidb等生成的数据，降低数据库压力。还有一个重要的作用是分布式应用的锁，比起依赖ZK的锁更常用一些。</p>
+</li>
+<li>
+<p>Memcache：在小型的独立项目中还是比较常用，降低数据库压力。在一些特定的高并发场景有不错的表现。但总得来说，我接触的Memcache场景已经不多了。</p>
+</li>
+<li>
+<p>MangoDB：在之前配合算法同学做的机器人项目中，“被动”接触了MangoDB，在非结构化数据模型的实时查询领域，有很好的的表现，其他的优点体验的不多，其他项目并没有应用。</p>
+</li>
+<li>
+<p>Hbase：公司项目中主要的数据仓库。主要作用是离线数据分析使用。ETL是个比较麻烦的事情，毕竟数据分析的同学并不擅长数据结构设定，合适的拆分关系型数据库模型，对架构师能力有很高的要求，同样的，从拆分的关系构建一张width-column数据模型的能力，也一样重要。</p>
+</li>
+<li>
+<p>Amazon DynamoDB：近期正在个人项目中接触的数据库存储，配合Serverless模型的应用，尝试将OLTP部分，移植到一个Nosql的项目中，看看会有什么问题。</p>
+</li>
+<li>
+<p>Amazon S3：同样是由于Serverless模型中，对象存储的存在。这部分还在学习状态，等待日后更新。</p>
+</li>
+</ul>
+<h2 id="基础服务" class="headerLink">
+    <a href="#%e5%9f%ba%e7%a1%80%e6%9c%8d%e5%8a%a1" class="header-mark"></a>基础服务</h2><ul>
+<li>
+<p>AWS：大量的托管类服务。行业顶级的Paas/Saas工具。很多我打算在Aliyun使用的功能，都会现在AWS上找对应工具进行体验。但是记得有些服务要及时删除，部分服务费用昂贵。</p>
+</li>
+<li>
+<p>AliYun：国内最好的云服务商。一些工作的项目，正在逐渐迁移到阿里云的EKS的云原生环境上。</p>
+</li>
+<li>
+<p>Namecheap：域名注册商。</p>
+</li>
+</ul>
+<h2 id="部署" class="headerLink">
+    <a href="#%e9%83%a8%e7%bd%b2" class="header-mark"></a>部署</h2><ul>
+<li>
+<p>Docker：容器化是现在，也是可以看到的时间里的未来。工作中的应用环境，全部在Docker容器上；个人项目中，受限一些部署迁移的工具，也仍然在使用虚拟机。</p>
+</li>
+<li>
+<p>Kubernetes：工作中，使用私有云环境K8s集群，正在迁移阿里云EKS集群中。学习成本比较高。两个小建议：1. 经验不足使用托管EKS。2. 虚拟机 or 容器集群？ 容器集群；容器集群的成本在初期会略微贵一点点，但规模化后，节点利用率高，边际成本低。</p>
+</li>
+</ul>
+<h2 id="开发工具" class="headerLink">
+    <a href="#%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" class="header-mark"></a>开发工具</h2><ul>
+<li>
+<p>Github：无需多说，源码管理。我的Blog的内容也在Github上托管。</p>
+</li>
+<li>
+<p>InteliJ IDEA：最主要的JAVA项目开发调试工具，缺点就是太重了。</p>
+</li>
+<li>
+<p>VSCode：主要在写文章，写团队博客中使用。最近也尝试在阅读代码中使用VSCode替代InteliJ，最重要的原因是轻量级，不会引起风扇噪音。插件丰富，能满足绝大多数的工作需要。准备再使用一段时间，看看能否将开发工作也迁移过来。</p>
+</li>
+</ul>
+<h2 id="设计" class="headerLink">
+    <a href="#%e8%ae%be%e8%ae%a1" class="header-mark"></a>设计</h2><ul>
+<li>
+<p>OmniGraffle：个人使用比较习惯的绘图工具，用来画架构，流程图。他有很多模板（stencil）下载，方便拖拽选用。</p>
+</li>
+<li>
+<p>Axure：产品原型工具。日常项目中，有很多技术驱动的产品设计，需要画出来与产品研发同学沟通，这个工具搭建简易原型要更有效率。顺便多说一句，项目设计时，一图胜千言。</p>
+</li>
+</ul></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-02-04</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" onclick="return false;" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://www.snackonmonday.com/technical-graph/"><i class="fab fa-linkedin fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lambda_processor/" class="prev" rel="prev" title="Lambda的线程数"><i class="fas fa-angle-left fa-fw"></i>Lambda的线程数</a>
+            <a href="/deploy_trojan_in_aws_ec2/" class="next" rel="next" title="部署Trojan">部署Trojan<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/snack8310" target="_blank" rel="noopener noreferrer">周一的下午茶</a></span></div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                                
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                                
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://doit-docs-comment-twikoo.vercel.app/","lang":"zh-cn"}},"search":{"algoliaAppID":"5YGRNRQK1G","algoliaIndex":"zh_cn_index","algoliaSearchKey":"0ff6874805de24b84aa1d5ebccad56cd","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"sharerjs":true};</script><script type="text/javascript" src="/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/js/twikoo.min.js" defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script></div>
+</body>
+
+</html>
