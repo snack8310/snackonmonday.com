@@ -322,7 +322,7 @@ enableEmoji = true
       # 网站描述
       description = "周一的下午茶"
       # 网站关键词
-      keywords = ["Theme", "Hugo"]
+      keywords = ["snack", "blog", "web3", "serverless"]
       # 应用图标配置
       [languages.zh-cn.params.app]
         # 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
@@ -381,9 +381,9 @@ enableEmoji = true
           # 主页显示的网站标题 (支持 HTML 格式)
           title = ""
           # 主页显示的网站副标题
-          subtitle = "每天学习一点点，了解世界一点点"
+          subtitle = "了解世界一点点"
           # 是否为副标题显示打字机动画
-          typeit = true
+          typeit = false
           # 是否显示社交账号
           social = true
           # 免责声明 (支持 HTML 格式)
@@ -483,7 +483,7 @@ enableEmoji = true
   version = "0.2.X"
   # site default theme ("light", "dark", "black", "auto")
   # 网站默认主题 ("light", "dark", "black", "auto")
-  defaultTheme = "auto"
+  defaultTheme = "light"
   # public git repo url only then enableGitInfo is true
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
   gitRepo = "https://github.com/HEIGE-PCloud/DoIt"
