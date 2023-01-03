@@ -5,6 +5,8 @@ draft: false
 description: Web3的概念介绍
 ---
 
+<!--more-->
+
 ## 什么是Web3？
 
 Web3是一个相对于Web2的概念，首先我们先理解Web1和Web2。
