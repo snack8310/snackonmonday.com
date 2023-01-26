@@ -9,13 +9,23 @@ description: Layer2的概念介绍
 
 在Web3领域，2022年最热的事一定是FTX的破产，但要说最2022年最热的技术，Layer2的发展可以排在很靠前的位置上。
 
-区块链不可能三角
+我们用一点文字，简单的理解下Layer2的技术
 
-Layer2交易量 
-
-Eth交易费
 ## 什么是Layer2
-Layer2并不是个很新的概念。
+Layer2并不是个很新的概念。在了解Layer2之前，先了解几个基本概念。
+
+### 区块链不可能三角
+去中心化
+规模
+安全
+
+### 交易成本
+
+时间 && 费用
+
+现状
+
+### Layer2的交易模型
 
 <div align=center>
 	<img src="/img/Layer1.png" width="512px"/>
@@ -35,21 +45,18 @@ Layer2并不是个很新的概念。
 
 ## Layer2的扩容方案
 
-Layer2的扩容方案有很多种，过去也产生过例如状态通道、子链、侧链等等多种模型。对这些有兴趣的进一步的了解。
-
-本文介绍一下现在比较主流的方案，Rollups。
-
-Rollups的一个特点，就是链下，通过合约脱离主链的存在。这种模式最大的问题就是如何保证链下交易的安全性。
-
-这里也分为两种，Optimistic Rollups 和 ZK Rollups
+Layer2的扩容方案有很多种，可以从l2beat.com上看到相关的数据统计
 
 <div align=center>
 	<img src="/img/Layer2_tvl.png" width="512px"/>
 </div>
 
-### Optimistic Chain
+现在比较主流的方案，比较集中在Rollup上。当然，如果对Optimistic Chain和Validium模型感兴趣，也可以自行了解一下。
 
-### Validium
+### Rollup
+Rollup的一个特点，就是链下，通过合约脱离主链的存在。这种模式最大的问题就是如何保证链下交易的安全性。
+
+这里也分为两种，Optimistic Rollups 和 ZK Rollups
 
 ### Optimistic Rollups
 乐观归并，采用的是信任Layer2的交易，假设交易都是正确的，设定交易有效期，在有效期内，可以对不正确的交易提出质疑，则会对这一次归并的交易重新计算，同时对“有问题”的交易计算节点进行处罚。由于乐观的认为交易的可靠性，可以极大的保证交易效率，降低成本，但缺点也存在，假定交易是正确的，这里存在比较高的风险，如果出现有问题的交易，需要做撤回，重新发起等复杂的流程。
