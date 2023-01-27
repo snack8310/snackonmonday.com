@@ -1,6 +1,6 @@
 ---
 title: "Layer2介绍"
-date: 2023-12-06T14:46:35+08:00
+date: 2022-12-06T14:46:35+08:00
 draft: false
 description: Layer2的产生和模型介绍
 ---
@@ -109,5 +109,6 @@ Rollup的一个特点，就是链下，通过合约脱离主链的存在。这�
 
 ## 引用
 
-https://ethereum.org/zh/layer-2/
-https://l2beat.com/scaling/tvl
+> https://ethereum.org/zh/layer-2/
+> 
+> https://l2beat.com/scaling/tvl
