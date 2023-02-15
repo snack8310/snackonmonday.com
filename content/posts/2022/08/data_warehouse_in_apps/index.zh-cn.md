@@ -66,7 +66,7 @@ ETL（提取、转换和加载）是这个环节非常重要的一件事。
 #### 数据分层
 
 <div align=center>
-	<img src="/img/2022/08/data/datahouse_layer.jpg"/>
+	<img src="/img/2022/08/data/datahouse_layer.jpg" width="728px"/>
 </div>
 
 上述内容是我们的数据仓库体系构建流程。
@@ -94,7 +94,7 @@ ETL(Extract Transform and Load): 提取转换加载器，用来描述将数据�
 
 各层次数据流走向如下图所示：
 <div align=center>
-	<img src="/img/2022/08/data/data_flow.jpg"/>
+	<img src="/img/2022/08/data/data_flow.jpg" width="728px"/>
 </div>
 
 #### 数据分层目的
@@ -102,7 +102,7 @@ ETL(Extract Transform and Load): 提取转换加载器，用来描述将数据�
 从数学上的理解，数据分层的目的是对数据降维。通过不同视角的数据归并，让数据集呈对数级的缩减。在最上游业务使用时，可以使用一个低维度的数据查询集。
 
 <div align=center>
-	<img src="/img/2022/08/data/data_demo.jpg"/>
+	<img src="/img/2022/08/data/data_demo.jpg" width="728px"/>
 </div>
 这是我们设计的分层后的结构。可以看到越往上层，聚合的业务数据表越少。
 
@@ -135,7 +135,7 @@ ETL(Extract Transform and Load): 提取转换加载器，用来描述将数据�
 1. 分析人员直接查询的平台工具，通过平台工具可以生成临时存储数据，建立在个人工作目录下。
 
 <div align=center>
-	<img src="/img/2022/08/data/data-analysis.png"/>
+	<img src="/img/2022/08/data/data-analysis.png" width="728px"/>
 </div>
 
 2. 提供一个标准的API数据，通过一个提供的数据字典，根据API的接口，提供分析类的查询功能。
@@ -148,7 +148,7 @@ ETL(Extract Transform and Load): 提取转换加载器，用来描述将数据�
 这是我们的一个数据产品，定期提供数据报告，包括局部数据下载，通过邮件系统报告等发送给业务负责人。
 
 <div align=center>
-	<img src="/img/2022/08/data/app_demo.png"/>
+	<img src="/img/2022/08/data/app_demo.png" width="728px"/>
 </div>
 
 当前的数据产品是直连的数据库（TiDB），这部分后面也会改成API的接口，可以提供规范化的参数标准，进一步降低应用的使用成本。
