@@ -2,6 +2,7 @@
 title: "Layer2介绍"
 date: 2022-12-06T14:46:35+08:00
 draft: false
+categories: [Web3]
 description: Layer2的产生和模型介绍
 ---
 
