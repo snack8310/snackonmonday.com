@@ -2,6 +2,7 @@
 title: "Web3介绍"
 date: 2022-11-28T16:19:51+08:00
 draft: false
+categories: [Web3]
 description: Web3的概念介绍
 ---
 
